@@ -1,0 +1,34 @@
+{
+  "name": "healty-life",
+  "version": "1.0.0",
+  "description": "Web project application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Armin112/HealthyLife.git"
+  },
+  "keywords": [
+    "Healthy",
+    "Life",
+    "Body",
+    "Fruits",
+    "Vegetables",
+    "Herbs",
+    "Drugs",
+    "Diseases",
+    "Natural"
+  ],
+  "author": "Armin Fehric",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Armin112/HealthyLife/issues"
+  },
+  "homepage": "https://github.com/Armin112/HealthyLife#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "nodemon": "^1.17.2"
+  }
+}
