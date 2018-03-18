@@ -1,5 +1,6 @@
 # HealthyLife
 
+test
 HealthyLife is web application, which main purpose is to helps the users in curing its disease by recommending the list of herbs, fruits and vegetabils that the user need to consume in order to get rid ot disease.
 I decided to build this web app, because I couldn't find any application which use only natural drugs to help people with diseases. So, the main purpose of this project is to give a chance to users to easily search for herbs, fruits and vegetabils that will be good for the health of the user depending on any health issue or disease that he/she is suffering from. User does not need to find it on google, and visit a lot of different web pages, our web app will be enough for everyone.
 
