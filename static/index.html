@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="healthylife-app" ng-controller="headerCtrl">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,9 +10,8 @@
 <title>HealthyLife - Home page</title>
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="images/favicon.png" />
-< script src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-< script src =" https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js "></script>
+
+
 <!-- font -->
 <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
@@ -34,454 +33,38 @@
 <!-- Responsive -->
 <link rel="stylesheet" type="text/css" href="css/responsive.css" /> 
 
+
+<link rel="shortcut icon" href="images/favicon.png" />
+
+
 </head>
 
-<body ng-app="healthylife">
+<body>
+    <div class="wrapper">
 
-<div class="wrapper">
+        <!--=================================
+         preloader -->
+         
+        <div id="pre-loader">
+            <img src="images/loader.svg" alt="">
+        </div>
 
-<!--=================================
- preloader -->
+        <div ng-if="!logedin">
+            <div ng-include="'login.html'"></div>
+        </div>
+        <div ng-if="logedin">
+            <div ng-include="'header.html'"></div>
+            <div ng-view></div>
+           <div ng-include="'footer.html'"></div>
+        </div>
+
  
-<div id="pre-loader">
-    <img src="images/loader.svg" alt="">
+     
 </div>
-
-<!--=================================
- preloader -->
-
-<!--=================================
- header -->
-
-  <header id="header" class="header default">
- 
-<!--=================================
- mega menu -->
-
-<div class="menu">  
-  <!-- menu start -->
-   <nav id="menu" class="mega-menu">
-    <!-- menu list items container -->
-    <section class="menu-list-items">
-     <div class="container"> 
-      <div class="row"> 
-       <div class="col-lg-12 col-md-12"> 
-        <!-- menu logo -->
-        <ul class="menu-logo">
-            <li>
-                <a href="index-01.html"><img id="logo_img" src="images/logo.png" alt="logo"> </a>
-            </li>
-        </ul>
-        <!-- menu links -->
-        <div class="menu-bar">
-         <ul class="menu-links">
-            <li class="active"><a href="index.html">HOME </a>  </li>
-            <li><a href="about.html"> ABOUT </a> </li>
-            <li><a href="javascript:void(0)"> CATEGORIES  <i class="fa fa-angle-down fa-indicator"></i> </a> 
-            <ul class="drop-down-multilevel left-side">
-                    <li><a href="herbs.html">Herbs</a>  </li>
-                    <li><a href="fruits.html">Fruits</a> </li>
-                    <li><a href="vegetables.html">Vegetables</a> </li>
-                </ul>
-              </li>
-            <li><a href="blog.html"> BLOG </a> </li>
-            <li><a href="contact.html"> CONTACT US  </a> </li>
-			<li><a class="button mt-30 mb-20 mr-0" href="login.html" style="margin-left: 20px;padding: 10px 20px;margin-top: 15px !important;">LOGIN</a></li>
-         </ul>
-        </div>
-       </div>
-      </div>
-     </div>
-    </section>
-   </nav>
-  <!-- menu end -->
- </div>
-</header>  
-
-<!--=================================
- header -->
-
-<!--=================================
- banner -->
-
-<section class="slider-parallax bitcoin-banner parallax" style="background: url(images/01.jpg);">
-  <div class="slider-content-middle">
-  <div class="container">
-     <div class="row">
-        <div class="col-lg-12 col-md-12">
-         <div class="slider-content text-center">
-            <div class="row">
-              <div class="col-md-12 col-sm-12">
-                <div class="bitcoin-banner-content">
-                  <div class="tab nav-center">
-                      <!--<ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                          <a class="nav-link active show" id="usd-tab" data-toggle="tab" href="#usd" role="tab" aria-controls="usd" aria-selected="true">$ USD</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" id="eur-tab" data-toggle="tab" href="#eur" role="tab" aria-controls="eur" aria-selected="false">€ EUR</a>
-                        </li>
-                      </ul>-->
-                      <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade active show" id="usd" role="tabpanel" aria-labelledby="usd-tab">
-                           <!--<h1 class="text-white theme-color">$11,183.81 </h1>-->
-                            <div class="bitcoin-price">
-                              <h3 class="text-white fw-5">Make your life <span style="color:#f7c605">healthy</span> with herbs and fruits. <br />Save your <span style="color:#f7c605">money</span>.  </h3>
-                             
-                            </div>
-                            <a class="button mt-30 mb-20 mr-0" href="#">Contribute</a>
-                            <p class="text-white"> <a class="text-white" href="#"> Tell us your personal experience with healthy products!</a> </p>
-                        </div>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-         </div>
-        </div>
-     </div>
-  </div>
-</section>  
-
-<!--=================================
- banner -->
-
-
-
-<!--=================================
- about -->
- 
- <section class="bitcoin-about white-bg page-section-pb">
-    <div class="container">
-       <div class="row">
-         <div class="col-md-12">
-           <div class="bitcoin-about-bg">
-            <div class="row">
-             <div class="col-md-12">
-                  <form action="" method="POST" id="mc-embedded-search-form" name="mc-embedded-search-form">
-                           
-            <div id="mc_embed_signup_scroll_2" class="col-md-10 pull-left">
-              <input id="search" class="form-control" type="text" placeholder="Enter disease and press enter or submit..." name="disease" value="" style="background: rgba(255,255,255,0.4); ">
-            </div>
-           
-            
-              <div class="clear col-md-2 pull-right">
-                <button type="submit" name="submitbtn" id="mc-embedded-subscribe" class="button mt-20 form-button" style="background: #ffffff !important; color: #fab41b;margin-top: 0 !important;padding: 13px 40px;">  Submit </button>
-              </div>
-            </form>
-                   </div>
-               </div>
-               
-               </div>
-           </div>
-         </div>
-       </div>
- </section>
-
-<!--=================================
- about -->
- 
-
-<!--=================================
- currency Calculator -->
-
-<section class="currency-calculator white-bg page-section-pb">
- <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-12">
-      <div class="section-title text-center">
-         <h2 class="">The Most Searched Diseases</h2>
-         <p>There are list of most searched diseases in last month. Check it!</p>
-      </div>
-<div class="col-lg-12 ">
-          <div class=" text-black">
-               <div class="owl-carousel" data-nav-dots="true" data-items="3" data-md-items="3" data-sm-items="3">
-         <div class="col-lg-12 col-md-12 col-sm-12 xs-mb-30">
-         <div class="blog-box blog-2 white-bg active">
-            <div class="feature-image mb-20">
-               <img alt="" src="images/empty-template.jpg" class="img-fluid">
-             </div>
-            <div class="blog-info">
-              <h4 class="text-black"> <a href="#"> Caroli Disease </a> </h4>
-               <strong class="theme-color">Fruits</strong>
-               <p class="mt-15">Quibusdam dolor sit amet, consectetur adipisicing elit. Vero quod conseqt, enim expedita  nesciunt incidunt accusamus necessitatibus modi.</p>
-			   <strong class="theme-color">SUGGESTED DRUGS</strong>
-			 <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#">   Drug 1</a></span> <span style="float:right; font-weight:400">350 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>4 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-			  <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 2</a></span> <span style="float:right; font-weight:400">310 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>2 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-				<h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 3</a></span> <span style="float:right; font-weight:400">234 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>14 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-            </div>
-         </div>
-       </div>
-       <div class="col-lg-12 col-md-12 col-sm-12 xs-mb-30">
-         <div class="blog-box blog-2 white-bg active">
-            <div class="feature-image mb-20">
-               <img alt="" src="images/empty-template.jpg" class="img-fluid">
-             </div>
-            <div class="blog-info">
-              <h4 class="text-black"> <a href="#"> Cystic Fibrosis </a> </h4>
-               <strong class="theme-color">Herbs</strong>
-
-               <p class="mt-15">Nesciunt incidunt accusamus necessitatibus modi adipisci officia sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia.</p>
-			    <strong class="theme-color">SUGGESTED DRUGS</strong>
-			 <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 1</a></span> <span style="float:right; font-weight:400">350 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>4 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-			  <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 2</a></span> <span style="float:right; font-weight:400">310 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>2 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-				<h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 3</a></span> <span style="float:right; font-weight:400">234 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>14 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-            </div>
-         </div>
-       </div>
-       <div class="col-lg-12 col-md-12 col-sm-12">
-         <div class="blog-box blog-2 white-bg active">
-            <div class="feature-image mb-20">
-               <img alt="" src="images/empty-template.jpg" class="img-fluid">
-             </div>
-            <div class="blog-info">
-              <h4 class="text-black"> <a href="#"> Friedreich Ataxia </a> </h4>
-               <strong class="theme-color">Vegetables</strong>
-               <p class="mt-15">Enim expedita  nesciunt incidunt accusamus necessitatibus modi adipisci officia sed quia nesciunt incidunt accusamus necessitatibus modi.</p>
-			   <strong class="theme-color">SUGGESTED DRUGS</strong>
-			 <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 1</a></span> <span style="float:right; font-weight:400">350 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>4 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-			  <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 2</a></span> <span style="float:right; font-weight:400">310 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>2 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-				 <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 3</a></span> <span style="float:right; font-weight:400">234 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>14 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-            </div>
-         </div>
-       </div>
-                </div>
-              </div>
-             </div>
-	  
-    </div>   
-  </div>
- 
-  
- </div>
-</section>
-
-
- <!--=================================
- currency Calculator -->
-
- <!--=================================
- custom content -->
-
-<section class="bitcoin-custom-content parallax" style="background: url(images/about-bg.jpg);">
-   <div class="container-fluid p-0">
-     <div class="row row-eq-height no-gutter">
-      <div class="col-lg-6 ">
-       </div>
-       <div class="col-lg-6 dark-theme-bg">
-        <div class="bitcoin-custom-conten-box">
-          <div class="section-title">
-             <h2 class="text-white">What is <span class="theme-color" style="font-weight:300">Healthy</span>Life?</h2>
-             <p class="text-white">Excepteur sint occaecat cupidatat non proident.</p>
-           </div>  
-           <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-		   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-           
-            <div class="row">
-               <div class="col-md-4 col-sm-4 mt-50">
-                 <div class="counter text-white">
-                    <span class="ti-heart-broken icon" aria-hidden="true"></span>
-                    <span class="timer" data-to="234" data-speed="10000">234</span>
-                    <label>Different diseases</label>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-4 mt-50">
-                 <div class="counter text-white">
-                    <span class="ti-crown icon" aria-hidden="true"></span>
-                    <span class="timer" data-to="1025" data-speed="10000">1025</span>
-                    <label>Different type of natural drugs</label>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-4 mt-50">
-                 <div class="counter text-white">
-                    <span class="ti-user icon" aria-hidden="true"></span>
-                    <span class="timer" data-to="435" data-speed="10000">435</span>
-                    <label>Number of users</label>
-                  </div>
-               </div>
-            </div>
-         </div>
-       </div>
-      </div>
-   </div>
-</section>
-
-  <!--=================================
- custom content -->
-
-
-  <!--=================================
-choose-bitcoin -->
-
-
-<!--=================================
-choose-bitcoin -->
-
- <!--=================================
-choose-bitcoin -->
-
-
-<!--=================================
-choose-bitcoin -->
-
-
- <!--=================================
- custom content -->
-
-
-
-
-  <!--=================================
- custom content -->
-
-
- <!--=================================
-price text  -->
-
-
-
-  <!--=================================
-price text  -->
-
-<!--=================================
-bitcoin-blog  -->
-
-<section class="bitcoin-blog gray-bg page-section-ptb">
-   <div class="container">
-    <div class="row justify-content-center">
-       <div class="col-md-8">
-         <div class="section-title text-center">
-           <h2>Latest Blog News</h2>
-           <p>Taking you from beginner to expert, one article at a time.</p>
-          </div>
-       </div>
-     </div>
-     <div class="row">
-       <div class="col-md-4 col-sm-4 xs-mb-30">
-         <div class="blog">
-           <img class="img-fluid mb-30" src="images/empty-template.jpg" alt="">
-            <h3 class="fw-5 mt-10"><a href="#">Lorem ipsum dolor sit amet?</a></h3>
-            <p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div class="admin">
-             <span>By adimn / <a href="#">Business</a></span>
-           </div>
-         </div>
-       </div>
-       <div class="col-md-4 col-sm-4 xs-mb-30">
-         <div class="blog">
-          <img class="img-fluid mb-30" src="images/empty-template.jpg" alt="">
-            <h3 class="fw-5 mt-10"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-            <p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div class="admin">
-             <span>By adimn / <a href="#">Business</a></span>
-           </div>
-         </div>
-       </div>
-       <div class="col-md-4 col-sm-4">
-         <div class="blog">
-          <img class="img-fluid mb-30" src="images/empty-template.jpg" alt="">
-            <h3 class="fw-5 mt-10"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-            <p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div class="admin">
-             <span>By adimn / <a href="#">Business</a></span>
-           </div>
-         </div>
-       </div>
-     </div>
-  </div>
-</section>
-
-  <!--=================================
-bitcoin-blog  -->
-
- <!--=================================
- footer -->
- 
-<footer class="footer footer-one-page page-section-pt black-bg">
- <div class="container">
-  <div class="row text-center">
-   <div class="col-lg-4 col-md-4">
-      <div class="contact-add mb-30"> 
-       <div class="text-center">
-           <i class="ti-map-alt text-white"></i>
-           <h5 class="mt-15">Address</h5>
-           <p>17504 Carlton Cuevas Rd, Gulfport, MS, 39503</p>
-          </div>
-      </div>
-   </div>
-   <div class="col-lg-4 col-md-4">
-      <div class="contact-add mb-30"> 
-       <div class="text-center">
-         <i class="ti-mobile text-white"></i>
-         <h5 class="mt-15">Call Us</h5>
-         <p> +(704) 279-1249</p>
-        </div>
-      </div>
-   </div>
-   <div class="col-lg-4 col-md-4">
-      <div class="contact-add mb-30"> 
-        <div class="text-center">
-         <i class="ti-email text-white"></i>
-         <h5 class="mt-15">Email Us</h5>
-         <p>letstalk@healthylife.com</p>
-       </div>
-      </div>
-   </div>
-   </div>
-    <div class="row justify-content-center">
-    <div class="col-lg-4 col-md-6">
-       <div class="footer-Newsletter text-center mt-30 mb-40">
-        <div id="mc_embed_signup_scroll">
-          <form action="php/mailchimp-action.php" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
-           <div id="msg"> </div>                 
-            <div id="mc_embed_signup_scroll_2">
-              <input id="mce-EMAIL" class="form-control" type="text" placeholder="Email address" name="email1" value="">
-            </div>
-            <div id="mce-responses" class="clear">
-              <div class="response" id="mce-error-response" style="display:none"></div>
-              <div class="response" id="mce-success-response" style="display:none"></div>
-              </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-              <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                  <input type="text" name="b_b7ef45306f8b17781aa5ae58a_6b09f39a55" tabindex="-1" value="">
-              </div>
-              <div class="clear">
-                <button type="submit" name="submitbtn" id="mc-embedded-subscribe" class="button button-border mt-20 form-button">  Get notified </button>
-              </div>
-            </form>
-          </div>
-        </div>
-     </div>
-    </div>
-   <div class="footer-widget mt-20">
-    <div class="row">
-      <div class="col-lg-6 col-md-6">
-       <p class="mt-15"> &copy;Copyright <span id="copyright"> <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script></span> <a href="#"> HealthyLife. </a> All Rights Reserved </p>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="social-icons color-hover float-right">
-         <ul> 
-          <li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-          <li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-          <li class="social-dribbble"><a href="#"><i class="fa fa-dribbble"></i> </a></li>
-          <li class="social-linkedin"><a href="#"><i class="fa fa-linkedin"></i> </a></li>
-         </ul>
-       </div>
-      </div>
-    </div>    
-  </div>
-  </div>
-</footer>
-
-<!--=================================
- footer -->
-
-</div>
- 
+     
 <div id="back-to-top"><a class="top arrow" href="#top"><i class="fa fa-angle-up"></i> <span>TOP</span></a></div> 
- 
- 
+</body>
+
 <!--=================================
  jquery -->
 
@@ -497,19 +80,36 @@ bitcoin-blog  -->
 <!-- custom -->
 <script src="js/custom.js"></script>
 
- 
-
-<!-- bitcoin script -->
-
- <script>
-  (function(b,i,t,C,O,I,N) {
-    window.addEventListener('load',function() {
-      if(b.getElementById(C))return;
-      I=b.createElement(i),N=b.getElementsByTagName(i)[0];
-      I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
-    },false)
-  })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+<script src="js/angular/angular.min.js"></script>
+<script src="js/angular/angular-route.js"></script>
+<script src="js/angular/xeditable.min.js"></script>
+<script src="js/angular/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="controllers/index-controller.js"></script>
+<script src="controllers/about-controller.js"></script>
+<script>
+  var app = angular.module("healthylife-app", ["ngRoute", "xeditable", "ui.bootstrap"]);
+  app.controller('indexController', IndexController);
+  app.controller('aboutController', AboutController);
+  app.config(function($routeProvider) {
+      $routeProvider
+      .when("/", {
+          templateUrl : "views/index.html",
+          controller : "indexController"
+      })
+      .when("/index", {
+          templateUrl : "views/index.html",
+          controller : "indexController"
+      })
+      .when("/about", {
+          templateUrl : "views/about.html",
+          controller : "aboutController"
+      })
+      
+   
+  });
 </script>
 
-</body>
+
+<script src="controllers/header-controller.js"></script>
+
 </html>
