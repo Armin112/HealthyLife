@@ -24,15 +24,22 @@
                     <li  ng-class="getClass('/about')"><a href="#!about"> ABOUT </a> </li>
                     <li><a href="javascript:void(0)"> CATEGORIES  <i class="fa fa-angle-down fa-indicator"></i> </a> 
                     <ul class="drop-down-multilevel left-side">
-                            <li><a href="herbs.html">Herbs</a>  </li>
-                            <li><a href="fruits.html">Fruits</a> </li>
-                            <li><a href="vegetables.html">Vegetables</a> </li>
+                            <li ng-class="getClass('/herbs')"><a href="#!herbs">Herbs</a>  </li>
+                            <li ng-class="getClass('/fruits')"><a href="#!fruits">Fruits</a> </li>
+                            <li ng-class="getClass('/vegetables')"><a href="#!vegetables">Vegetables</a> </li>
                         </ul>
                       </li>
-                    <li><a href="blog.html"> BLOG </a> </li>
-                    <li><a href="contact.html"> CONTACT US  </a> </li>
-                    <li><a class="button mt-30 mb-20 mr-0" href="login.html" style="margin-left: 20px;padding: 10px 20px;margin-top: 15px !important;">LOGIN</a></li>
-                 </ul>
+                    <li ng-class="getClass('/blog')"><a href="#!blog"> BLOG </a> </li>
+                    <li ng-class="getClass('/contact')"><a href="#!contact"> CONTACT US  </a> </li>
+                    <div ng-if="!logedin">
+                        <li ng-class="getClass('/login')"><a class="button mt-30 mb-20 mr-0" href="#!login" style="margin-left: 20px;padding: 10px 20px;margin-top: 37px !important;">LOGIN</a></li>
+                    </div>
+                    <div ng-if="logedin">
+                    <li ng-class="getClass('/logout')" ng-click="logout()"><a class="button mt-30 mb-20 mr-0" href="#!index" style="margin-left: 20px;padding: 10px 20px;margin-top: 37px !important;">LOGOUT</a></li>
+                    </div>
+
+                   
+                </ul>
                 </div>
                </div>
               </div>
@@ -41,4 +48,4 @@
            </nav>
           <!-- menu end -->
          </div>
-        </header> 
+        </header>

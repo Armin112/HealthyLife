@@ -49,14 +49,13 @@
             <img src="images/loader.svg" alt="">
         </div>
 
-        <div ng-if="!logedin">
-            <div ng-include="'login.html'"></div>
-        </div>
-        <div ng-if="logedin">
+       
+
+       
             <div ng-include="'header.html'"></div>
             <div ng-view></div>
            <div ng-include="'footer.html'"></div>
-        </div>
+      
 
  
      
@@ -86,10 +85,26 @@
 <script src="js/angular/ui-bootstrap-tpls-2.5.0.min.js"></script>
 <script src="controllers/index-controller.js"></script>
 <script src="controllers/about-controller.js"></script>
+<script src="controllers/fruits-controller.js"></script>
+<script src="controllers/herbs-controller.js"></script>
+<script src="controllers/vegetables-controller.js"></script>
+<script src="controllers/blog-controller.js"></script>
+<script src="controllers/contact-controller.js"></script>
+<script src="controllers/login-controller.js"></script>
+<script src="controllers/logout-controller.js"></script>
+<script src="controllers/register-controller.js"></script>
 <script>
   var app = angular.module("healthylife-app", ["ngRoute", "xeditable", "ui.bootstrap"]);
   app.controller('indexController', IndexController);
   app.controller('aboutController', AboutController);
+  app.controller('fruitsController', FruitsController);
+  app.controller('herbsController', HerbsController);
+  app.controller('vegetablesController', VegetablesController);
+  app.controller('blogController', BlogController);
+  app.controller('contactController', ContactController);
+  app.controller('loginController', LoginController);
+  app.controller('registerController', LoginController);
+  
   app.config(function($routeProvider) {
       $routeProvider
       .when("/", {
@@ -104,6 +119,35 @@
           templateUrl : "views/about.html",
           controller : "aboutController"
       })
+      .when("/fruits", {
+          templateUrl : "views/fruits.html",
+          controller : "fruitsController"
+      })
+      .when("/herbs", {
+          templateUrl : "views/herbs.html",
+          controller : "herbsController"
+      })
+      .when("/vegetables", {
+          templateUrl : "views/vegetables.html",
+          controller : "vegetablesController"
+      })
+      .when("/blog", {
+          templateUrl : "views/blog.html",
+          controller : "blogController"
+      })
+      .when("/contact", {
+          templateUrl : "views/contact.html",
+          controller : "contactController"
+      })
+      .when("/login", {
+          templateUrl : "views/login.html",
+          controller : "loginController"
+      })
+      .when("/register", {
+          templateUrl : "views/register.html",
+          controller : "registerController"
+      })
+      
       
    
   });
