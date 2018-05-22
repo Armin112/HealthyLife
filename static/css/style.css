@@ -2022,3 +2022,7 @@ img.bottom-img { top: 0; }
  .newsletter.fancy button { padding: 14px 20px;  }
 }}
 
+.button:disabled {
+    background: #ccc !important;
+    cursor: no-drop;
+}

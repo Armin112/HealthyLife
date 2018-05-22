@@ -28,7 +28,11 @@
   },
   "homepage": "https://github.com/Armin112/HealthyLife#readme",
   "dependencies": {
+    "angularjs-toaster": "^2.2.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "nodemon": "^1.17.2"
+    "md5": "^2.2.1",
+    "mongodb": "^2.2.33",
+    "nodemon": "^1.17.4"
   }
 }

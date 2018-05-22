@@ -30,33 +30,60 @@
            </div> 
          </div>
          <div class="col-md-4">
+           
+          <form name="addUser" novalidate>
           <div class="login-box pb-50 clearfix white-bg">
           <h3 class="mb-30">Signup</h3>
             <div class="row">
                <div class="section-field mb-20 col-sm-6">
                  <label class="mb-10" for="name">First name* </label>
-                   <input id="name" class="web form-control" type="text" placeholder="First name" name="web">
+                   <input id="name" class="web form-control" type="text"  name="firstname"  ng-model="user.firstname" required>
+                    <span style="color:red; font-size:12px;" ng-show="addUser.firstname.$touched && addUser.firstname.$invalid">
+                      <span ng-show="addUser.firstname.$error.required">Firstname is required.</span>
+                    </span>
                 </div>
                  <div class="section-field mb-20 col-sm-6">
                  <label class="mb-10" for="name">Last name* </label>
-                   <input id="name" class="web form-control" type="text" placeholder="Last name" name="web">
+                   <input id="lastname" class="web form-control" type="text"  name="lastname" ng-model="user.lastname" required>
+                   <span style="color:red; font-size:12px;" ng-show="addUser.lastname.$touched && addUser.lastname.$invalid">
+                      <span ng-show="addUser.lastname.$error.required">Lastname is required.</span>
+                    </span>
                 </div>
               </div>
               <div class="section-field mb-20">
+                <label class="mb-10" for="name">Username* </label>
+                 <input type="text"  class="form-control" name="username"  ng-model="user.username" required>
+                 <span style="color:red; font-size:12px;" ng-show="addUser.username.$touched && addUser.username.$invalid">
+                    <span ng-show="addUser.username.$error.required">Username is required.</span>
+                  </span>
+            </div>
+              <div class="section-field mb-20">
                    <label class="mb-10" for="name">Email* </label>
-                    <input type="email" placeholder="Email*" class="form-control" name="email">
+                    <input type="email"  class="form-control" name="email"  ng-model="user.email" required>
+                      <span style="color:red; font-size:12px;" ng-show="addUser.email.$touched && addUser.email.$invalid">
+                        <span ng-show="addUser.email.$error.required">Email is required.</span>
+                        <span ng-show="addUser.email.$error.email">Invalid email address.</span>
+                      </span>
                </div>
               <div class="section-field mb-20">
                <label class="mb-10" for="Password">Password* </label>
-                 <input id="Password" class="Password form-control" type="password" placeholder="Password" name="Password">
+                 <input id="password" class="Password form-control" type="password"  name="password"  pattern=".{5,}" ng-model="user.password" required>
+                 <span style="color:red; font-size:12px;" ng-show="addUser.password.$touched && addUser.password.$invalid">
+                    <span ng-show="addUser.password.$error.required">Password must have at least 5 chars.</span>
+                  </span>
               </div>
-                <a href="#" class="button">
-                  <span>Signup</span>
-                  <i class="fa fa-check"></i>
-               </a>
+              <button  ng-click="add_user()" ng-disabled="!addUser.$valid" class="button" type="submit">Signup <i class="fa fa-check"></i></button>
+              <p style="color: green; margin-top:40px;"> {{message_success}}</p>
             </div>
-           </div>
+
+         
+          </form>
+          
+         
+         
           </div>
         </div>
     </div>
   </section>
+
+  
