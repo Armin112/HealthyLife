@@ -514,7 +514,7 @@
       }
       @media screen and (min-width:992px) {
         .mega-menu.desktopTopFixed .menu-list-items {    /*--------------------------------------------------------- TOP FIXED FOR DESKTOP */
-        position: fixed; top: 0; left: 0; right: 0; max-width: 100%; padding: 0px 10px; background: #323232; box-shadow: 0 0 10px rgba(0, 0, 0, .1); }
+        position: fixed; top: 0; left: 0; right: 0; height:100px !important; max-width: 100%; padding: 0px 10px; background: #323232; box-shadow: 0 0 10px rgba(0, 0, 0, .1); }
         .mega-menu.desktopTopFixed .menu-list-items .drop-down.grid-col-12,
         .mega-menu.desktopTopFixed .menu-list-items .drop-down-tab-bar.grid-col-12 { width: 100%; margin: 0px; }
         .mega-menu.desktopTopFixed .menu-list-items .menu-logo > li > a img { height: 40px; padding-top: 0px; margin: 15px 0px;    /*width: 75%;*/ }

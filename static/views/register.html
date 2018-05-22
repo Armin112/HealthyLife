@@ -73,7 +73,7 @@
                     <span ng-show="addUser.password.$error.required">Password must have at least 5 chars.</span>
                   </span>
               </div>
-              <button  ng-click="add_user()" ng-disabled="!addUser.$valid" class="button" type="submit">Signup <i class="fa fa-check"></i></button>
+              <button  ng-click="add_user(user)" ng-disabled="!addUser.$valid" class="button" type="submit">Signup <i class="fa fa-check"></i></button>
               <p style="color: green; margin-top:40px;"> {{message_success}}</p>
             </div>
 

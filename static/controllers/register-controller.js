@@ -8,8 +8,8 @@ function RegisterController($scope,$location, $http, $timeout){
         }
       };
 
-    $scope.add_user = function(){
-        $http.post('/register', $scope.user).then(function(response){
+    $scope.add_user = function(user){
+        $http.post('/register', user, config).then(function(response){
           $scope.user = null;
           $scope.message_success = "Congratulations, you are successfully created your profile. You will be redirected to login page now.";
           $timeout(function(){ 

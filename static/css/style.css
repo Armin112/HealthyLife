@@ -93,7 +93,7 @@ NOTE: This is main stylesheet of template, This file contains the styling for th
 
 /*menu*/
 .menu-bar { float: right; }
-.mega-menu .menu-links { float: left; }
+.mega-menu .menu-links { float: left; margin-top:40px; }
 .search-cart { display: inline-block;   }
 .search-cart i.icon { color: #ffffff; line-height: 20px; font-size: 14px; transition: 0.5s ease-in-out; -webkit-transition: 0.5s ease-in-out; -moz-transition: 0.5s ease-in-out; -o-transition: 0.5s ease-in-out; }
 .search-cart i.icon:hover { color: #f7c605; }
@@ -170,7 +170,7 @@ NOTE: This is main stylesheet of template, This file contains the styling for th
 .mega-menu .col-md-12  { padding-left: 0px; padding-right: 0px; }
 .mega-menu.desktopTopFixed .menu-logo { padding: 0px; }
 .mega-menu.desktopTopFixed .search-cart i.icon { line-height: 20px; }
-.mega-menu.desktopTopFixed .menu-list-items .menu-logo > li > a img { height: 30px; } 
+.mega-menu.desktopTopFixed .menu-list-items .menu-logo > li > a img { height: 60px; } 
 .mega-menu .badge  { color: #ffffff; }
 .mega-menu .drop-down-multilevel li.activeTriggerMobile { background: #fafafa; }
  
@@ -2025,4 +2025,13 @@ img.bottom-img { top: 0; }
 .button:disabled {
     background: #ccc !important;
     cursor: no-drop;
+}
+
+.simple-text{
+    margin: 50px auto;
+    display: block;
+    text-align: center;
+    color: #666;
+    font-size: 20px;
+    font-weight: 400;
 }
