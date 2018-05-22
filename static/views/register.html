@@ -1,6 +1,7 @@
 <section class="login-box-main height-100vh page-section-ptb parallax" style="background: url(images/slider-bg.jpg)">
     <div class="login-box-main-middle">
     <div class="container">
+        <div ng-if="!check_login()">
        <div class="row justify-content-center no-gutter">
         <div class="col-lg-2 col-md-4">
           <div class="login-box-left  white-bg">
@@ -83,6 +84,10 @@
          
           </div>
         </div>
+      </div>
+      <div ng-if="check_login()">
+          <h4 style="color: #ffffff;text-align: center; font-size: 2rem;">You are logged in already.</h4>
+          </div>
     </div>
   </section>
 

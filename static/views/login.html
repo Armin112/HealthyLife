@@ -1,6 +1,8 @@
 
+
 <section class="login-box-main height-100vh page-section-ptb parallax" style="background: url(images/slider-bg.jpg)">  <div class="login-box-main-middle">
     <div class="container">
+        <div ng-if="!check_login()">
        <div class="row justify-content-center no-gutter">
         <div class="col-lg-2 col-md-4">
           <div class="login-box-left  white-bg">
@@ -30,15 +32,17 @@
            </div> 
          </div>
          <div class="col-md-4">
+            <form name="loginUser" novalidate>
           <div class="login-box pb-50 clearfix white-bg">
           <h3 class="mb-30">Login</h3>
            <div class="section-field mb-20">
-               <label class="mb-10" for="name">User name* </label>
-                 <input id="name" class="web form-control" type="text" placeholder="User name" name="web">
+               <label class="mb-10" for="name">Username* </label>
+                 <input id="name" class="web form-control" type="text"  name="username"  ng-model="credentials.username" required>
+                 
               </div>
               <div class="section-field mb-20">
                <label class="mb-10" for="Password">Password* </label>
-                 <input id="Password" class="Password form-control" type="password" placeholder="Password" name="Password">
+                 <input id="Password" class="Password form-control" type="password" name="password"  ng-model="credentials.password" required>
               </div>
               <div class="section-field">
                 <div class="remember-checkbox mb-30">
@@ -47,17 +51,20 @@
                    <a href="password-recovery.html" class="float-right">Forgot Password?</a>
                   </div>
                 </div>
-                <a href="#" class="button" ng-click="login()">
-                  <span>Log in</span>
-                  <i class="fa fa-check"></i>
-               </a>
-            </div>
+              
+               <button  ng-click="login(credentials)" ng-disabled="!loginUser.$valid" class="button" type="submit">Signup <i class="fa fa-check"></i></button>
+               <p style="color: green; margin-top:40px;"> {{message_success}}</p>
+              </div>
+          </form>
            </div>
           </div>
         </div>
-    </div>
+      </div>
+      <div ng-if="check_login()">
+          <h4 style="color: #ffffff;text-align: center; font-size: 2rem;">You are logged in already.</h4>
+          </div>
+              
+  </div>
   </section>
   
-  <!--=================================
-   login-->
-    
+

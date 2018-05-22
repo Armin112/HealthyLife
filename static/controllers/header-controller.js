@@ -1,18 +1,32 @@
-app.controller('headerCtrl', function($scope, $location){
+app.controller('headerCtrl', function($scope, $location, $http, $timeout){
 
- $scope.onako = $location.path();
+  
     $scope.logedtext = "LOGIN";
-    $scope.login = function(){
-        $scope.logedin = true;
-        $scope.logedtext = "LOGOUT";
+
+    $scope.check_login = function(){
+        if(localStorage.getItem('user')){
+            return true;
+        }
+        return false;
+    }
+
+    $scope.login = function(credentials){
+        $http.post('/login', credentials).then(function(response){
+            localStorage.setItem('user',response.data.token);
+            $scope.logedin = true;
+              $location.path("/index"); 
+            $scope.logedtext = "LOGOUT";
+            }),function(error){
+                console.log(error);
+            }
     }
 
     $scope.logout = function(){
+        localStorage.clear();
         $scope.logedin = false;
         $scope.logedtext = "LOGIN";
     }
-
-  
+    
 
     $scope.getClass = function (path) {
         if (path == '/index' && $location.path() == '/') return 'active';

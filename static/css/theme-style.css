@@ -39,7 +39,7 @@ h2 { font-size: 40px; line-height: 40px; font-weight: 500;}
 	background: linear-gradient(right, #ff8850, #f7c605); }
 
 /*bitcoin-about*/
-.bitcoin-about-bg { position: relative; margin-top: -100px; padding: 60px; background: #f7c605; background: -webkit-gradient(linear, 100% 0, 0 0, from(#ff8850), to(#f7c605));
+.bitcoin-about-bg { position: relative; margin-top: -10px; padding: 60px; background: #f7c605; background: -webkit-gradient(linear, 100% 0, 0 0, from(#ff8850), to(#f7c605));
 	background: -webkit-linear-gradient(right, #ff8850, #f7c605); background: -moz-linear-gradient(right, #ff8850, #f7c605); background: -o-linear-gradient(right, #ff8850, #f7c605);
 	background: linear-gradient(right, #ff8850, #f7c605); }
 .bitcoin-box span {  font-size: 40px; line-height: 40px; font-weight: 500; }

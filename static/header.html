@@ -31,11 +31,11 @@
                       </li>
                     <li ng-class="getClass('/blog')"><a href="#!blog"> BLOG </a> </li>
                     <li ng-class="getClass('/contact')"><a href="#!contact"> CONTACT US  </a> </li>
-                    <div ng-if="!logedin">
+                    <div ng-if="!check_login()">
                         <li ng-class="getClass('/login')"><a class="button mt-30 mb-20 mr-0" href="#!login" style="margin-left: 20px;padding: 10px 20px;margin-top: 37px !important;">LOGIN</a></li>
                     </div>
-                    <div ng-if="logedin">
-                    <li ng-class="getClass('/logout')" ng-click="logout()"><a class="button mt-30 mb-20 mr-0" href="#!index" style="margin-left: 20px;padding: 10px 20px;margin-top: 37px !important;">LOGOUT</a></li>
+                    <div ng-if="check_login()">
+                    <li ng-class="getClass('/logout')" ng-click="logout()"><a class="button mt-30 mb-20 mr-0" href="#!login" style="margin-left: 20px;padding: 10px 20px;margin-top: 37px !important;">LOGOUT</a></li>
                     </div>
 
                    
