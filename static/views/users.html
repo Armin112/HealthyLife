@@ -1,0 +1,42 @@
+
+<section class="page-title bg-overlay-black-60 parallax" data-jarallax='{"speed": 0.6}' style="background-image: url(images/bg/02.jpg);">
+    <div class="container">
+      <div class="row"> 
+        <div class="col-lg-12"> 
+        <div class="page-title-name">
+            <h1>All Users</h1>
+            <p>View or delete user on your site.</p>
+          </div>
+            <ul class="page-breadcrumb">
+              <li><a href="#"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
+              <li><a href="#">All Users</a> <i class="fa fa-angle-double-right"></i></li>
+             
+         </ul>
+       </div>
+       </div>
+    </div>
+  </section>
+  
+  
+    
+    <table class="admin-table">
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Username</th>
+            <th>Email address</th>
+            <th>Action</th>
+        </tr>
+        <tr ng-repeat="user in users">
+            <td>{{user.firstname}}</td>
+            <td>{{user.lastname}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td> 
+                <button ng-click="delete_user(user._id)" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">
+                Delete
+            </button>
+        </td>
+        </tr>
+    </table>
+    <p style="color: green;margin: 40px;text-align: center;font-size: 16px;"> {{message_success}}</p>

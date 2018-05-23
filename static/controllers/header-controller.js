@@ -1,8 +1,27 @@
 app.controller('headerCtrl', function($scope, $location, $http, $timeout){
+    var config = {headers:  {
+        'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+        'Accept': 'application/json;odata=verbose',
+        "JWT" : localStorage.getItem('user')
+        }
+      };
 
-  
+    var check_admin = "";
+    var init = function(){
+        get_admin();
+    }
+
+    var get_admin = function (){
+        $http.get('/users/is_admin', config).then(function(response){
+          check_admin = response.data;
+          console.log(check_admin);
+        }),function(error){
+          alert(error.status);
+        }
+      };
+      init();
+
     $scope.logedtext = "LOGIN";
-
     $scope.check_login = function(){
         if(localStorage.getItem('user')){
             return true;
@@ -10,6 +29,15 @@ app.controller('headerCtrl', function($scope, $location, $http, $timeout){
         return false;
     }
 
+    $scope.is_admin = function(){
+        if(check_admin == "admin"){
+            return true;
+        }
+        return false;
+    }
+
+
+   
     $scope.login = function(credentials){
         $http.post('/login', credentials).then(function(response){
             localStorage.setItem('user',response.data.token);

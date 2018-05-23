@@ -19,6 +19,11 @@
                 </ul>
                 <!-- menu links -->
                 <div class="menu-bar">
+              
+                                <div ng-repeat="user in users"> 
+
+                                        {{user.username}}
+                                </div>  
                 <div ng-if="check_login()">
                  <ul class="menu-links">
                     <li ng-class="getClass('/index')"><a href="#!index">HOME </a>  </li>
@@ -30,15 +35,20 @@
                             <li ng-class="getClass('/vegetables')"><a href="#!vegetables">Vegetables</a> </li>
                         </ul>
                       </li>
-                    <li ng-class="getClass('/blog')"><a href="#!blog"> BLOG </a> </li>
-                    <li ng-class="getClass('/contact')"><a href="#!contact"> CONTACT US  </a> </li>
-                    <li ng-class="getClass('/myprofile')"><a href="#!myprofile"> MY PROFILE  </a> </li>
-                        <li ng-class="getClass('/logout')" ng-click="logout()"><a class="button mb-20 mr-0" href="#!login"  style="margin-left: 20px;padding: 10px 20px;margin-top: -15px !important;">LOGOUT</a></li>
-                  
-                     
+                        <li ng-class="getClass('/blog')"><a href="#!blog"> BLOG </a> </li>
+                        <li ng-class="getClass('/contact')"><a href="#!contact"> CONTACT US  </a> </li>
+                        <li ng-class="getClass('/myprofile')"><a href="#!myprofile"> MY PROFILE  </a> </li>
+                       
+                                <li ng-if="is_admin()"><a href="javascript:void(0)"> ADMIN  <i class="fa fa-angle-down fa-indicator"></i> </a> 
+                                        <ul class="drop-down-multilevel left-side">
+                                                <li ng-class="getClass('/users')"><a href="#!users">All Users</a>  </li>   
+                                        </ul>
+                                </li>
+                       
+                        <li ng-class="getClass('/logout')" ng-click="logout()"><a class="button mb-20 mr-0" href="#!login"  style="margin-left: 20px;padding: 10px 20px;margin-top: -15px !important;">LOGOUT</a></li>     
                 </ul>
                 </div>
-
+               
                 <div ng-if="!check_login()">
                 <ul class="menu-links">
                         <li ng-class="getClass('/index')"><a href="#!index">HOME </a>  </li>
@@ -54,10 +64,11 @@
                         <li ng-class="getClass('/contact')"><a href="#!contact"> CONTACT US  </a> </li>
                        
                         <li ng-class="getClass('/login')"><a class="button mb-20 mr-0" href="#!login" style="margin-left: 20px;padding: 10px 20px;margin-top: -15px !important;">LOGIN</a></li>
-                        
+                       
                           
                     </ul>
                 </div>
+                
                 </div>
                </div>
               </div>

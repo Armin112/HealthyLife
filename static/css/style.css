@@ -2035,3 +2035,32 @@ img.bottom-img { top: 0; }
     font-size: 20px;
     font-weight: 400;
 }
+
+.admin-table {
+    width: 90%;
+    margin: 50px auto;
+    background: #f5f5f5;
+    border-radius: 5px;
+    /* border: 1px solid #ccc; */
+}
+
+.admin-table td, .admin-table th {
+    text-align: center;
+    padding: 15px 0;
+    border: 1px solid #e6e6e6;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.admin-table button {
+    font-size: 14px;
+}
+
+.admin-table tr:first-child th {
+    padding: 20px 0;
+}
+
+.admin-table tr:first-child {
+    background: -webkit-linear-gradient(right, #ff8850, #f7c605) !important;
+    color: #fff;
+}

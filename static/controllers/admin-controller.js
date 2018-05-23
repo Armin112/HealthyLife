@@ -1,5 +1,5 @@
-function MyProfileController($scope,$location, $http, $rootScope){
-    console.log("Hello from controller");
+function AdminController($scope,$location, $http, $rootScope){
+    console.log("Hello from admin controller");
 
     
     var config = {headers:  {
@@ -11,26 +11,26 @@ function MyProfileController($scope,$location, $http, $rootScope){
   
       var init = function(){
       
-        get_users();
+        get_all_users();
       
       
       }
 
-    var get_users = function (){
-        $http.get('/users/myprofile', config).then(function(response){
+    var get_all_users = function (){
+        $http.get('/admin/all_users', config).then(function(response){
           $scope.users = response.data;
           console.log(response.data);
         }),function(error){
           alert(error.status);
         }
       };
-    
+
       init();
 
-      $scope.edit_user = function(user){
-        $http.put('/users/edituser', user,config).then(function(response){
-            $scope.message_success = "Congratulations, you are successfully updated your profile.";
-          get_users();
+      $scope.delete_user = function(id){
+        $http.delete('/admin/delete_user/'+id, config).then(function(response){
+            get_all_users();
+            $scope.message_success = "You are successfully removed user from your site.";
         }, function(error){
           console.log(error);
         });
