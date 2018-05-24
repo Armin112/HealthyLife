@@ -158,9 +158,18 @@
           templateUrl : "views/users.html",
           controller : "adminController"
       })
-      
-      
-   
+      .when("/blog-admin", {
+          templateUrl : "views/blog-admin.html",
+          controller : "adminController"
+      })
+      .when("/add-blog", {
+          templateUrl : "views/add-blog.html",
+          controller : "adminController"
+      })
+      .when("/single-blog", {
+          templateUrl : "views/blog-single.html",
+          controller : "blogController"
+      })
   });
 </script>
 

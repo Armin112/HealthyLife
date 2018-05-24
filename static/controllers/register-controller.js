@@ -19,7 +19,4 @@ function RegisterController($scope,$location, $http, $timeout){
           console.log(error);
         });
       }
-
-      
-      
 }

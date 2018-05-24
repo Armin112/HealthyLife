@@ -12,7 +12,7 @@ app.use('/', express.static('static'));
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies
 var MongoId = require('mongodb').ObjectID;
-
+var nowDate = new Date();
 
 app.post('/register', function(request, response){
   var user_reg = request.body;
@@ -23,8 +23,6 @@ app.post('/register', function(request, response){
         response.send('OK');
       
       })
-    
- 
 });
 
 var cur_user = "";
@@ -96,9 +94,45 @@ app.get('/admin/all_users', function(request, response){
 
 app.delete('/admin/delete_user/:id', function(request, response){
   db.collection('users').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
-    console.log("nesto");
     if (err) return res.send(500, err)
     response.send('OK');
+  })
+});
+
+
+var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate(); 
+app.post('/admin/addblog', function(request, response){
+  var addblog = request.body;
+  var excerpt = addblog.content.substring(0, 80);
+      db.collection('blog').save({'title': addblog.title, 'content': addblog.content, excerpt: excerpt, 'tags': addblog.tags
+      , 'image': addblog.image, 'date': date}, (err, result) => {
+        if (err) return console.log(err);
+        response.send('OK');
+      
+      })
+});
+
+app.get('/admin/all_blogs', function(request, response){
+  db.collection('blog').find().toArray((err, blogs) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(blogs);
+  })
+});
+
+app.delete('/admin/blog_delete/:id', function(request, response){
+  db.collection('blog').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
+    if (err) return res.send(500, err)
+    response.send('OK');
+  })
+});
+
+app.get('/admin/single_blog/:id', function(request, response){
+  db.collection('blog').find({_id: new MongoId(request.params.id)}).toArray((err, single_blog) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(single_blog);
+  
   })
 });
 
