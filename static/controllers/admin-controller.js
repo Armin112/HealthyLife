@@ -52,6 +52,13 @@ function AdminController($scope,$location, $http, $rootScope, $timeout){
         }, function(error){
           console.log(error);
         });
+
+        $http.get('/admin/addblog', blog, config).then(function(response){
+            $scope.blog = null;
+            $scope.message_success = "Congratulations, you are successfully added new blog image.";
+          }, function(error){
+            console.log(error);
+          });
       }
 
       $scope.delete_blog = function(id){

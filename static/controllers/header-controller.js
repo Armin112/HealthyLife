@@ -9,6 +9,8 @@ app.controller('headerCtrl', function($scope, $location, $http, $timeout){
     var check_admin = "";
     var init = function(){
         get_admin();
+        get_users();
+        get_single_blog();
     }
 
     var get_admin = function (){
@@ -19,7 +21,7 @@ app.controller('headerCtrl', function($scope, $location, $http, $timeout){
           alert(error.status);
         }
       };
-      init();
+      
 
     $scope.logedtext = "LOGIN";
     $scope.check_login = function(){
@@ -54,8 +56,27 @@ app.controller('headerCtrl', function($scope, $location, $http, $timeout){
         $scope.logedin = false;
         $scope.logedtext = "LOGIN";
     }
-    
 
+    var get_users = function (){
+        $http.get('/users/myprofile', config).then(function(response){
+          $scope.users = response.data;
+          console.log(response.data);
+        }),function(error){
+          alert(error.status);
+        }
+      };
+      
+      var curr_blog_id = $location.search().id;
+      var get_single_blog = function (){
+        $http.get('/admin/single_blog/'+curr_blog_id).then(function(response){
+            $scope.single_blog = response.data;
+            console.log(response.data);
+          }),function(error){
+            alert(error.status);
+          }
+      };
+    
+      init();
     $scope.getClass = function (path) {
         if (path == '/index' && $location.path() == '/') return 'active';
         return ($location.path() === path) ? 'active' : '';

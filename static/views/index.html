@@ -196,36 +196,18 @@
          </div>
        </div>
        <div class="row">
-         <div class="col-md-4 col-sm-4 xs-mb-30">
+         <div class="col-md-4 col-sm-4 xs-mb-30" ng-repeat="blog in blogs">
            <div class="blog">
              <img class="img-fluid mb-30" src="images/empty-template.jpg" alt="">
-              <h3 class="fw-5 mt-10"><a href="#">Lorem ipsum dolor sit amet?</a></h3>
-              <p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <h3 class="fw-5 mt-10"><a href="/#!single-blog?id={{blog._id}}">{{blog.title}}</a></h3>
+              <p>{{blog.excerpt}}</p>
               <div class="admin">
-               <span>By adimn / <a href="#">Business</a></span>
+               <span>{{blog.date}}</span>
              </div>
            </div>
          </div>
-         <div class="col-md-4 col-sm-4 xs-mb-30">
-           <div class="blog">
-            <img class="img-fluid mb-30" src="images/empty-template.jpg" alt="">
-              <h3 class="fw-5 mt-10"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-              <p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <div class="admin">
-               <span>By adimn / <a href="#">Business</a></span>
-             </div>
-           </div>
-         </div>
-         <div class="col-md-4 col-sm-4">
-           <div class="blog">
-            <img class="img-fluid mb-30" src="images/empty-template.jpg" alt="">
-              <h3 class="fw-5 mt-10"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-              <p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <div class="admin">
-               <span>By adimn / <a href="#">Business</a></span>
-             </div>
-           </div>
-         </div>
+         
+         
        </div>
     </div>
   </section>

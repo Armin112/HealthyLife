@@ -1,5 +1,5 @@
 <div ng-repeat="blog in single_blog">
-<section class="page-title bg-overlay-black-60 parallax" data-jarallax='{"speed": 0.6}' style="background-image: url(images/bg/02.jpg);">
+<section class="page-title bg-overlay-black-60 parallax" data-jarallax='{"speed": 0.6}' style="background-image: url(images/slider-bg.jpg);">
   <div class="container">
     <div class="row"> 
       <div class="col-lg-12"> 
@@ -58,16 +58,16 @@
     <div class="col-ld-12 col-md-12">
          <h3 class="theme-color mb-20">Related Blog Post</h3>  
         
-          <div class="item" ng-repeat="blog in blogs" style="width:33%; display:inline-block">
+          <div class="item" ng-repeat="blog2 in blogs" style="width:33%; display:inline-block">
             <div class="blog-box blog-1 active">        
                  <div class="blog-info">
                   <span class="post-category"><a href="#">Blog</a></span>
-                  <h4> <a href="#"> {{blog.title}}</a></h4>
-                  <p>{{blog.excerpt}}</p>
+                  <h4> <a href="#"> {{blog2.title}}</a></h4>
+                  <p>{{blog2.excerpt}}</p>
                   <span><i class="fa fa-user"></i> By Admin</span>
-                  <span><i class="fa fa-calendar-check-o"></i> {{blog.date}} </span>
+                  <span><i class="fa fa-calendar-check-o"></i> {{blog2.date}} </span>
                   <div class="entry-button" style="margin-top: 20px;">
-                        <a class="button arrow" href="/#!single-blog?id={{blog._id}}">Read More<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        <a class="button arrow" href="/#!single-blog?id={{blog2._id}}">Read More<i class="fa fa-angle-right" aria-hidden="true"></i></a>
                     </div>
                   </div>  
                   <div class="blog-box-img" style="background-image:url(images/blog-big-template.jpg);"></div>
@@ -80,99 +80,62 @@
      </div>
  <!-- ================================================ -->
   <div class="blog-comments mt-40">
-      <div class="comments-1">
+      <div class="comments-1" ng-repeat="comment in comments">
          <div class="comments-photo">
            <img class="img-fluid" src="images/person-template.jpg" alt="">
           </div>
            <div class="comments-info">
-           <h4 class="theme-color"> Kevin Martin <span>Sep 15, 2017</span></h4>
+           <h4 class="theme-color"> {{comment.firstname}} {{comment.lastname}} <span>{{comment.date}}</span></h4>
             <div class="port-post-social float-right">
-              <a href="#">Reply</a>
+              
             </div>
-              <p>Sit amet nibh vulputate cursus a sit amet mauris lorem ipsum dolor sit amet of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio  <a href="#">http://themeforest.net</a> Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat </p>
+              <p>{{comment.message}}</p>
          </div>
          </div>
-         <div class="comments-1 comments-2">
-         <div class="comments-photo">
-           <img class="img-fluid" src="images/person-template.jpg" alt="">
-          </div>
-           <div class="comments-info">
-           <h4 class="theme-color"> Kevin Martin <span>Sep 15, 2017</span></h4>
-            <div class="port-post-social float-right">
-              <a href="#">Reply</a>
-            </div>
-              <p>Vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor Lorem ipsum dolor sit amet of Lorem Ipsum. Proin gravida nibh..</p>
-         </div>
-         </div>
-         <div class="comments-1 comments-2">
-         <div class="comments-photo">
-           <img class="img-fluid" src="images/person-template.jpg" alt="">
-          </div>
-           <div class="comments-info">
-           <h4 class="theme-color"> Kevin Martin <span>Sep 15, 2017</span></h4>
-            <div class="port-post-social float-right">
-              <a href="#">Reply</a>
-            </div>
-              <p>Aenean sollicitudin, lorem quis bibendum auctor Lorem ipsum dolor sit amet of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet..</p>
-         </div>
-         </div>
-         <div class="comments-1">
-         <div class="comments-photo">
-           <img class="img-fluid" src="images/person-template.jpg" alt="">
-          </div>
-           <div class="comments-info">
-           <h4 class="theme-color"> Kevin Martin <span>Sep 15, 2017</span></h4>
-            <div class="port-post-social float-right">
-              <a href="#">Reply</a>
-            </div>
-              <p>Bibendum auctor Lorem ipsum dolor sit amet of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris <a href="#">http://themeforest.net</a> Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat </p>
-         </div>
-      </div>
+         
+         
+         
   </div>
  <!-- ================================================ -->
 <br/>
  <div class="row">
        <div class="col-lg-12 col-md-12">
+            
        <h3 class="theme-color mb-30">Leave a Reply </h3> 
-         <div class="row">
-       <div class="col-lg-12 col-md-12">
-         <div id="formmessage">Success/Error Message Goes Here</div>
-         </div> 
-       </div>
-           <form id="contactform" class="gray-form form-row" role="form" method="post" action="">
-                <div class="col-lg-6 col-md-6 col-sm-6   ">
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Website URL">
-                    </div>
+       <div ng-repeat="user in users">
+            <p class="logged-as">You are logged in as {{user.firstname}} {{user.lastname}}.</p>
+        </div>
+       
+       
+       <form name="addComment" novalidate>
+            <div class="login-box pb-50 clearfix white-bg">
+                     
+                
+                   
+                    <div ng-repeat="user in users">
+                           
+                          
+                    <input id="name" class="web form-control" type="hidden"  name="firstname" value="{{user.firstname}}"  ng-model="user.firstname" required>
+                    <input id="lastname" class="web form-control" type="hidden"  name="lastname" value="{{user.lastname}}" ng-model="user.lastname" required>
+                    <input type="hidden"  class="form-control" name="username" value="{{user.username}}" ng-model="user.username" required>
+                    <input type="hidden"  class="form-control" value="{{user.email}}" name="email"  ng-model="user.email" required>
+                    <div class="row">
+                
+                        <div class="section-field mb-20 col-sm-12">
+                        <label class="mb-10" for="name">Enter your message </label>
+                          <textarea id="message" class="web form-control" style="height:200px;" name="message" ng-model="user.message" pattern=".{20,}" required></textarea>
+                          <span style="color:red; font-size:12px;" ng-show="addComment.message.$touched && addComment.message.$invalid">
+                             <span ng-show="addComment.message.$error.required">You need to enter minimum 20 chars.</span>
+                           </span>
+                       </div>
+                <button  style="height: 50px; margin-left: 15px;" ng-click="add_comment(user, blog)" ng-disabled="!addComment.$valid" class="button" type="submit">Post Comment <i class="fa fa-check"></i></button>
+                
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Your Name">
-                    </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email Adress">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputphone1" placeholder="Phone Number">
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12">
-                    <div class="form-group">
-                        <textarea class="form-control" rows="7" placeholder="message"></textarea>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12">
-                <div class="g-recaptcha section-field clearfix" data-sitekey="[Add your site key]"></div>
-              </div>
-                <div class="col-lg-12 col-md-12">
-                    <input type="hidden" name="action" value="sendEmail">
-                    <button id="submit" name="submit" type="submit" value="Send" class="button"><span>Submit Now</span></button>
-                </div>
+              <p style="color: green; margin-top:40px;"> {{message_success}}</p>
+           
             </form>
+        
             <div id="ajaxloader" style="display:none"><img class="mx-auto mt-30 mb-30 d-block" src="images/pre-loader/loader-02.svg" alt=""></div> 
            </div> 
         </div> 

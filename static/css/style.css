@@ -2055,8 +2055,9 @@ margin-top:50px;}
     font-weight: 400;
 }
 
-.admin-table button {
+.admin-table button, .admin-table a {
     font-size: 14px;
+    color: #fff !important;
 }
 
 .admin-table tr:first-child th {
@@ -2066,4 +2067,14 @@ margin-top:50px;}
 .admin-table tr:first-child {
     background: -webkit-linear-gradient(right, #ff8850, #f7c605) !important;
     color: #fff;
+}
+
+.logged-as{
+    font-size: 18px;
+    margin: 30px 0;
+    color: #fff;
+    background: -webkit-linear-gradient(right, #ff8850, #f7c605) !important;
+    padding: 10px;
+    font-weight: 300;
+}
 }
