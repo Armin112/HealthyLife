@@ -1,0 +1,46 @@
+
+<section class="page-title bg-overlay-black-60 parallax" data-jarallax='{"speed": 0.6}' style="background-image: url(images/slider-bg.jpg);">
+    <div class="container">
+      <div class="row"> 
+        <div class="col-lg-12"> 
+        <div class="page-title-name">
+            <h1>All Diseases</h1>
+            <p>View or delete diseases on your site.</p>
+          </div>
+            <ul class="page-breadcrumb">
+              <li><a href="#"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
+              <li><a href="#">All Diseases</a> <i class="fa fa-angle-double-right"></i></li>
+             
+         </ul>
+       </div>
+       </div>
+    </div>
+  </section>
+  
+  <section class="main-section">
+      <div class="container">
+            <div ng-class="getClass('/add-blog')"><a class="button mr-0" href="#!add-disease"  style="padding: 15px 30px;">ADD DISEASE</a></div>     
+     
+  
+    <table class="admin-table">
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            
+            <th>Action</th>
+        </tr>
+        <tr ng-repeat="disease in diseases">
+            <td>{{disease.title}}</td>
+            <td>{{disease.date}}</td>
+            <td> 
+                <button ng-click="delete_disease(disease._id)" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">
+                Delete
+            </button>
+            <a class="btn btn-warning btn-simple btn-lg" href="/#!single-disease?id={{disease._id}}">Read More</a>
+        </td>
+        </tr>
+    </table>
+    <p style="color: green;margin: 40px;text-align: center;font-size: 16px;"> {{message_success}}</p>
+
+</div>
+</section>

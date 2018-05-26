@@ -20,7 +20,7 @@
                 <!-- menu links -->
                 <div class="menu-bar">
               
-                                <div ng-repeat="user in users"> 
+                                <div ng-repeat="user in users_test"> 
 
                                         {{user.username}}
                                 </div>  
@@ -42,7 +42,8 @@
                                 <li ng-if="is_admin()"><a href="javascript:void(0)"> ADMIN  <i class="fa fa-angle-down fa-indicator"></i> </a> 
                                         <ul class="drop-down-multilevel left-side">
                                                 <li ng-class="getClass('/users')"><a href="#!users">All Users</a>  </li> 
-                                                <li ng-class="getClass('/users')"><a href="#!blog-admin">Blog News</a>  </li>    
+                                                <li ng-class="getClass('/users')"><a href="#!blog-admin">Blog News</a>  </li>
+                                                <li ng-class="getClass('/diseases')"><a href="#!disease-admin">Diseases</a>  </li>     
                                         </ul>
                                 </li>
                        

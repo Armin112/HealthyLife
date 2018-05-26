@@ -6,93 +6,81 @@ app.controller('headerCtrl', function($scope, $location, $http, $timeout){
         }
       };
 
-    var check_admin = "";
-    var init = function(){
-        get_admin();
-        get_users();
-        get_single_blog();
-    }
-
-    var get_admin = function (){
-        $http.get('/users/is_admin', config).then(function(response){
-          check_admin = response.data;
-          console.log(check_admin);
-        }),function(error){
-          alert(error.status);
-        }
-      };
-      
-
-    $scope.logedtext = "LOGIN";
-    $scope.check_login = function(){
-        if(localStorage.getItem('user')){
-            return true;
-        }
-        return false;
-    }
-
-    $scope.is_admin = function(){
-        if(check_admin == "admin"){
-            return true;
-           
-        }
-        return false;
-    }
-
-
+var check_admin = "";
+var curr_blog_id = $location.search().id;
+var init = function(){
+    get_admin();
+    get_users();
    
-    $scope.login = function(credentials){
-        $http.post('/login', credentials).then(function(response){
-            localStorage.setItem('user',response.data.token);
-            $scope.logedin = true;
-              $location.path("/index"); 
-            $scope.logedtext = "LOGOUT";
-            }),function(error){
-                console.log(error);
-            }
+}
+
+var get_admin = function (){
+    $http.get('/users/is_admin', config).then(function(response){
+        check_admin = response.data;
+    }),function(error){
+        alert(error.status);
     }
-
-    $scope.logout = function(){
-        localStorage.clear();
-        $scope.logedin = false;
-        $scope.logedtext = "LOGIN";
+};
+      
+$scope.logedtext = "LOGIN";
+$scope.check_login = function(){
+    if(localStorage.getItem('user')){
+        return true;
     }
+    return false;
+}
 
-    var get_users = function (){
-        $http.get('/users/myprofile', config).then(function(response){
-          $scope.users = response.data;
-          console.log(response.data);
-        }),function(error){
-          alert(error.status);
-        }
-      };
+$scope.is_admin = function(){
+    if(check_admin == "admin"){
+        return true;  
+    }
+    return false;
+}
 
-      var curr_blog_id = $location.search().id;
-      var get_single_blog = function (){
-        $http.get('/admin/single_blog/'+curr_blog_id).then(function(response){
-            $scope.single_blog = response.data;
-            console.log(response.data);
-          }),function(error){
-            alert(error.status);
-          }
-      };
+$scope.login = function(credentials){
+    $http.post('/login', credentials).then(function(response){
+        localStorage.setItem('user',response.data.token);
+        $scope.logedin = true;
+            $location.path("/index"); 
+        $scope.logedtext = "LOGOUT";
+    }),function(error){
+        console.log(error);
+    }
+}
+
+$scope.logout = function(){
+    localStorage.clear();
+    $scope.logedin = false;
+    $scope.logedtext = "LOGIN";
+}
+
+var get_users = function (){
+    $http.get('/users/myprofile', config).then(function(response){
+        $scope.users = response.data;
+    }),function(error){
+        alert(error.status);
+    }
+};
+
+
     
-      init();
-    $scope.getClass = function (path) {
-        if (path == '/index' && $location.path() == '/') return 'active';
-        return ($location.path() === path) ? 'active' : '';
-    },
+init();
 
-    $scope.openNavigationDrawer = function(){
-        if ($scope.mobileNavigationOpen == 'nav-open'){
-            $scope.mobileNavigationOpen = '';
-        }else{
-            $scope.mobileNavigationOpen = 'nav-open';
-        }
-        
-    }
-    $scope.menuItemClicked = function(){
+$scope.getClass = function (path) {
+    if (path == '/index' && $location.path() == '/') return 'active';
+    return ($location.path() === path) ? 'active' : '';
+},
+
+$scope.openNavigationDrawer = function(){
+    if ($scope.mobileNavigationOpen == 'nav-open'){
         $scope.mobileNavigationOpen = '';
+    }else{
+        $scope.mobileNavigationOpen = 'nav-open';
     }
+    
+}
+$scope.menuItemClicked = function(){
+    $scope.mobileNavigationOpen = '';
+}
 
 });

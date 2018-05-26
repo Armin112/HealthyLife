@@ -17,6 +17,8 @@ var multer = require('multer');
 var cur_blog_id = "";
 var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate(); 
 var cur_user = "";
+
+//REGISTER USER
 app.post('/register', function(request, response){
   var user_reg = request.body;
       db.collection('users').save({'firstname': user_reg.firstname, 'lastname': user_reg.lastname, 'username': user_reg.username
@@ -26,7 +28,7 @@ app.post('/register', function(request, response){
       })
 });
 
-
+//LOGIN USER
 app.post('/login', function(request, response){
   var user = request.body;
   db.collection("users").findOne({'username': user.username, 'password': md5(user.password)}, function(error, user) {
@@ -50,35 +52,35 @@ app.post('/login', function(request, response){
   });
 });
 
+//GET SINGLE USER PROFILE
 app.get('/users/myprofile', function(request, response){
   db.collection('users').find({username:cur_user}).toArray((err, users) => {
     if (err) return console.log(err);
     response.setHeader('Content-Type', 'application/json');
     response.send(users);
-   
-    console.log(cur_user);
   })
 });
 
+//GET ADMIN USER
 app.get('/users/is_admin', function(request, response){
   db.collection('users').find({username:cur_user}).toArray((err, users) => {
     if (err) return console.log(err); 
     response.send(cur_user);
-    console.log(cur_user);
   })
 });
 
+//EDIT SINGLE USER PROFILE
 app.put('/users/edituser', function(request, response){
   user = request.body;
   db.collection('users').findOneAndUpdate( {username:cur_user }, {
-    $set: {firstname: user.firstname, lastname: user.lastname, username: user.username, 
-      email: user.email}
+    $set: {firstname: user.firstname, lastname: user.lastname, username: user.username, email: user.email}
   }, (err, result) => {
     if (err) return res.send(err);
     response.send('OK');
   })
 });
 
+//GET ALL USERS
 app.get('/admin/all_users', function(request, response){
   db.collection('users').find().toArray((err, users) => {
     if (err) return console.log(err);
@@ -87,7 +89,7 @@ app.get('/admin/all_users', function(request, response){
   })
 });
 
-
+//DELETE USER
 app.delete('/admin/delete_user/:id', function(request, response){
   db.collection('users').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
     if (err) return res.send(500, err)
@@ -95,14 +97,12 @@ app.delete('/admin/delete_user/:id', function(request, response){
   })
 });
 
+//STORE POST IMAGE -- NOT WORKING
 var storage	=	multer.diskStorage({
   destination: function (request, file, callback) {
-    callback(null, './Imagews');
-  },
+    callback(null, './Imagews'); },
   filename: function (request, file, callback) {
-    callback(null, file.fieldname + '-' + Date.now() + '.' + mime.extension(file.mimetype));
-  }
-});
+    callback(null, file.fieldname + '-' + Date.now() + '.' + mime.extension(file.mimetype)); }});
 var upload = multer({ storage : storage }).array('image');
 
 app.get('/admin/addblog', function(request, response){
@@ -111,23 +111,21 @@ app.get('/admin/addblog', function(request, response){
   console.log(__dirname);
 });
 
-app.post('/admin/addblog', function(request, response){
+//ADD NEW BLOG POST
+app.post('/admin/add_blog', function(request, response){
   var addblog = request.body;
   var excerpt = addblog.content.substring(0, 80);
-  
   upload(request, response, function(err) { 
     if (err) return console.log(err);
-    console.log(storage.destination);
-    console.log(storage.filename);
     db.collection('blog').save({'title': addblog.title, 'content': addblog.content, excerpt: excerpt, 'tags': addblog.tags
     , 'image': addblog.image, 'date': date}, (err, result) => {
       if (err) return console.log(err);
       response.send('OK');
     })
   }); 
-  
 });
 
+//GET ALL BLOG POSTS
 app.get('/admin/all_blogs', function(request, response){
   db.collection('blog').find().toArray((err, blogs) => {
     if (err) return console.log(err);
@@ -136,6 +134,7 @@ app.get('/admin/all_blogs', function(request, response){
   })
 });
 
+//DELETE BLOG POST
 app.delete('/admin/blog_delete/:id', function(request, response){
   db.collection('blog').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
     if (err) return res.send(500, err)
@@ -143,6 +142,7 @@ app.delete('/admin/blog_delete/:id', function(request, response){
   })
 });
 
+//GET SINGLE BLOG POST
 app.get('/admin/single_blog/:id', function(request, response){
   db.collection('blog').find({_id: new MongoId(request.params.id)}).toArray((err, single_blog) => {
     if (err) return console.log(err);
@@ -152,6 +152,48 @@ app.get('/admin/single_blog/:id', function(request, response){
   })
 });
 
+//ADD NEW DISEASE
+app.post('/admin/add_disease', function(request, response){
+  var add_disease = request.body;
+  var excerpt = add_disease.content.substring(0, 80);
+  upload(request, response, function(err) { 
+    if (err) return console.log(err);
+    db.collection('disease').save({'title': add_disease.title, 'content': add_disease.content, excerpt: excerpt, 'tags': add_disease.tags
+    , 'image': add_disease.image, 'date': date}, (err, result) => {
+      if (err) return console.log(err);
+      response.send('OK');
+    })
+  }); 
+});
+
+//GET ALL DISEASES
+app.get('/admin/all_diseases', function(request, response){
+  db.collection('disease').find().toArray((err, diseases) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(diseases);
+  })
+});
+
+//DELETE DISEASE
+app.delete('/admin/disease_delete/:id', function(request, response){
+  db.collection('disease').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
+    if (err) return res.send(500, err)
+    response.send('OK');
+  })
+});
+
+//GET SINGLE DISEASE
+app.get('/admin/single_disease/:id', function(request, response){
+  db.collection('disease').find({_id: new MongoId(request.params.id)}).toArray((err, single_disease) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(single_disease);
+    cur_blog_id = request.params.id;
+  })
+});
+
+//ADD COMMENT ON POST
 app.post('/admin/add_comment', function(request, response){
   var user_comment = request.body;
       db.collection('comments').save({'firstname': user_comment.firstname, 'lastname': user_comment.lastname, 'username': user_comment.username
@@ -161,6 +203,7 @@ app.post('/admin/add_comment', function(request, response){
       })
 });
 
+//GET COMMENTS FROM OTHER USERS
 app.get('/admin/get_comments', function(request, response){
   db.collection('comments').find( { $and: [ { post_id: { $eq: cur_blog_id } }, { username: { $ne: cur_user } } ] }).toArray((err, comments) => {
     if (err) return console.log(err);
@@ -169,15 +212,16 @@ app.get('/admin/get_comments', function(request, response){
   })
 });
 
+//GET COMMENTS FROM CURRENT USER
 app.get('/admin/user_post_comment', function(request, response){
   db.collection('comments').find({ $and: [ { post_id: { $eq: cur_blog_id } }, { username: { $eq: cur_user } } ] }).toArray((err, user_comment) => {
     if (err) return console.log(err); 
     response.setHeader('Content-Type', 'application/json');
     response.send(user_comment);
-   
   })
 });
 
+//DELETE COMMENT
 app.delete('/admin/comment_delete/:id', function(request, response){
   db.collection('comments').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
     if (err) return res.send(500, err)
@@ -185,6 +229,7 @@ app.delete('/admin/comment_delete/:id', function(request, response){
   })
 });
 
+//EDIT COMMENT
 app.put('/admin/comment_edit/:id', function(request, response){
   post_comment = request.body;
   db.collection('comments').findOneAndUpdate( {_id: new MongoId(request.params.id)}, {
@@ -195,6 +240,7 @@ app.put('/admin/comment_edit/:id', function(request, response){
   })
 });
 
+//CONNECT TO DATABASE AND RUN APP
 MongoClient.connect('mongodb://localhost:27017/healthylife', (err, database) => {
   if (err) return console.log(err)
   db = database

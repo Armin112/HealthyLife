@@ -1,4 +1,4 @@
-function BlogController($scope, $http, $location){
+function DiseaseController($scope, $http, $location){
     var config = {headers:  {
       'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
       'Accept': 'application/json;odata=verbose',
@@ -6,26 +6,26 @@ function BlogController($scope, $http, $location){
       }
     };
 
-    var curr_blog_id = $location.search().id; 
+    var curr_disease_id = $location.search().id; 
     var user_post_comment ="";
     var init = function(){
-        get_all_blogs();
-        get_single_blog();
+        get_all_diseases();
+        get_single_disease();
         get_comments();
         get_user_post_comment();
       }
 
-    var get_all_blogs = function (){
-        $http.get('/admin/all_blogs').then(function(response){
-          $scope.blogs = response.data;
+    var get_all_diseases = function (){
+        $http.get('/admin/all_diseases').then(function(response){
+          $scope.diseases = response.data;
         }),function(error){
           alert(error.status);
         }
     };
 
-    var get_single_blog = function (){
-      $http.get('/admin/single_blog/'+curr_blog_id).then(function(response){
-          $scope.single_blog = response.data; 
+    var get_single_disease = function (){
+      $http.get('/admin/single_disease/'+curr_disease_id).then(function(response){
+          $scope.single_disease = response.data; 
         }),function(error){
           alert(error.status);
         }
@@ -53,10 +53,9 @@ function BlogController($scope, $http, $location){
 
     $scope.add_comment = function(user){
       $http.post('/admin/add_comment', user,  config).then(function(response){
-        $scope.user = null;
         get_comments();
         get_user_post_comment();
-           
+        $scope.user = null;   
         $scope.message_success = "Congratulations, you are successfully added new comment on this post.";
         $timeout(function(){ 
           $scope.message_success = "";

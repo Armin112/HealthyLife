@@ -94,6 +94,7 @@
 <script src="controllers/register-controller.js"></script>
 <script src="controllers/myprofile-controller.js"></script>
 <script src="controllers/admin-controller.js"></script>
+<script src="controllers/disease-controller.js"></script>
 <script>
   var app = angular.module("healthylife-app", ["ngRoute", "xeditable", "ui.bootstrap"]);
   app.controller('indexController', IndexController);
@@ -107,6 +108,7 @@
   app.controller('registerController', RegisterController);
   app.controller('myprofileController', MyProfileController);
   app.controller('adminController', AdminController);
+  app.controller('diseaseController', DiseaseController);
 
   app.config(function($routeProvider) {
       $routeProvider
@@ -169,6 +171,18 @@
       .when("/single-blog", {
           templateUrl : "views/blog-single.html",
           controller : "blogController"
+      })
+      .when("/disease-admin", {
+          templateUrl : "views/disease-admin.html",
+          controller : "adminController"
+      })
+      .when("/add-disease", {
+          templateUrl : "views/add-disease.html",
+          controller : "adminController"
+      })
+      .when("/single-disease", {
+          templateUrl : "views/disease-single.html",
+          controller : "diseaseController"
       })
   });
 </script>
