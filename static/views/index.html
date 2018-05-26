@@ -196,7 +196,7 @@
          </div>
        </div>
        <div class="row">
-         <div class="col-md-4 col-sm-4 xs-mb-30" ng-repeat="blog in blogs">
+         <div class="col-md-4 col-sm-4 xs-mb-30" ng-repeat="blog in blogs | limitTo:3">
            <div class="blog">
              <img class="img-fluid mb-30" src="images/empty-template.jpg" alt="">
               <h3 class="fw-5 mt-10"><a href="/#!single-blog?id={{blog._id}}">{{blog.title}}</a></h3>

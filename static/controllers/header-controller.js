@@ -34,6 +34,7 @@ app.controller('headerCtrl', function($scope, $location, $http, $timeout){
     $scope.is_admin = function(){
         if(check_admin == "admin"){
             return true;
+           
         }
         return false;
     }
@@ -65,7 +66,7 @@ app.controller('headerCtrl', function($scope, $location, $http, $timeout){
           alert(error.status);
         }
       };
-      
+
       var curr_blog_id = $location.search().id;
       var get_single_blog = function (){
         $http.get('/admin/single_blog/'+curr_blog_id).then(function(response){

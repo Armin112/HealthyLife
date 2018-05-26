@@ -80,21 +80,53 @@
      </div>
  <!-- ================================================ -->
   <div class="blog-comments mt-40">
-      <div class="comments-1" ng-repeat="comment in comments">
+      <div class="comments-1" ng-repeat="comment in comments" style="width:100%">
          <div class="comments-photo">
            <img class="img-fluid" src="images/person-template.jpg" alt="">
           </div>
            <div class="comments-info">
            <h4 class="theme-color"> {{comment.firstname}} {{comment.lastname}} <span>{{comment.date}}</span></h4>
-            <div class="port-post-social float-right">
-              
+            <div class="port-post-social float-right" ng-if="is_admin()">
+                    <button ng-click="delete_comment(user_comment._id)" type="button" rel="tooltip" title="Remove" class="comment-button btn-simple">
+                            Delete
+                        </button>
             </div>
               <p>{{comment.message}}</p>
          </div>
-         </div>
+         </div> 
          
-         
-         
+         <div class="comments-1" ng-repeat="user_comment in user_comments" style="width:100%">
+                <div class="comments-photo">
+                  <img class="img-fluid" src="images/person-template.jpg" alt="">
+                 </div>
+                  <div class="comments-info">
+                  <h4 class="theme-color"> {{user_comment.firstname}} {{user_comment.lastname}} <span>{{user_comment.date}}</span></h4>
+                   <div class="port-post-social float-right">
+                    <button ng-click="edit_comment(user_comment._id)" type="button" rel="tooltip" title="Remove" class="comment-button btn-simple">
+                        Edit
+                    </button>
+                      <button ng-click="delete_comment(user_comment._id)" type="button" rel="tooltip" title="Remove" class="comment-button btn-simple">
+                        Delete
+                        </button>
+                   </div>
+                     <p>{{user_comment.message}}</p>
+                     
+                     <form name="editComment" novalidate style="border: 1px solid #e4e4e4; padding: 10px;">
+                            <div class="section-field mb-20 col-sm-12">
+                               <label class="mb-10" for="name" style="font-size: 12px; color: #ccc;border-bottom: 1px solid #e4e4e4;width: 100%;">Edit your comment </label>
+                                    <textarea id="message" placeholder="Edit Message" class="web form-control" style="height:50px;" name="message" ng-model="user_comment.message"
+                                     pattern=".{20,}" required>{{user_comment.message}}</textarea>
+                               <span style="color:red; font-size:12px;" ng-show="addComment.message.$touched && addComment.message.$invalid">
+                               <span ng-show="addComment.message.$error.required">You need to enter minimum 20 chars.</span>
+                               </span>
+                           </div>
+                           <button ng-click="edit_comment(user_comment, user_comment._id)" style="font-size:12px" ng-disabled="!editComment.$valid" class="button" type="submit">Edit Comment <i class="fa fa-check"></i></button>
+                           </form>
+                           
+                </div>
+                
+                </div>
+               
   </div>
  <!-- ================================================ -->
 <br/>
@@ -128,12 +160,12 @@
                              <span ng-show="addComment.message.$error.required">You need to enter minimum 20 chars.</span>
                            </span>
                        </div>
-                <button  style="height: 50px; margin-left: 15px;" ng-click="add_comment(user, blog)" ng-disabled="!addComment.$valid" class="button" type="submit">Post Comment <i class="fa fa-check"></i></button>
+                <button  style="height: 50px; margin-left: 15px;" ng-click="add_comment(user)" ng-disabled="!addComment.$valid" class="button" type="submit">Post Comment <i class="fa fa-check"></i></button>
                 
                 </div>
                 </div>
-              <p style="color: green; margin-top:40px;"> {{message_success}}</p>
-           
+              <div class="message-success"><p style="color: green; margin-top:40px;"> {{message_success}}</p>
+            </div>
             </form>
         
             <div id="ajaxloader" style="display:none"><img class="mx-auto mt-30 mb-30 d-block" src="images/pre-loader/loader-02.svg" alt=""></div> 

@@ -16,7 +16,7 @@ var nowDate = new Date();
 var multer = require('multer');
 var cur_blog_id = "";
 var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate(); 
-
+var cur_user = "";
 app.post('/register', function(request, response){
   var user_reg = request.body;
       db.collection('users').save({'firstname': user_reg.firstname, 'lastname': user_reg.lastname, 'username': user_reg.username
@@ -26,7 +26,7 @@ app.post('/register', function(request, response){
       })
 });
 
-var cur_user = "";
+
 app.post('/login', function(request, response){
   var user = request.body;
   db.collection("users").findOne({'username': user.username, 'password': md5(user.password)}, function(error, user) {
@@ -162,10 +162,36 @@ app.post('/admin/add_comment', function(request, response){
 });
 
 app.get('/admin/get_comments', function(request, response){
-  db.collection('comments').find({post_id: cur_blog_id}).toArray((err, comments) => {
+  db.collection('comments').find( { $and: [ { post_id: { $eq: cur_blog_id } }, { username: { $ne: cur_user } } ] }).toArray((err, comments) => {
     if (err) return console.log(err);
     response.setHeader('Content-Type', 'application/json');
     response.send(comments);
+  })
+});
+
+app.get('/admin/user_post_comment', function(request, response){
+  db.collection('comments').find({ $and: [ { post_id: { $eq: cur_blog_id } }, { username: { $eq: cur_user } } ] }).toArray((err, user_comment) => {
+    if (err) return console.log(err); 
+    response.setHeader('Content-Type', 'application/json');
+    response.send(user_comment);
+   
+  })
+});
+
+app.delete('/admin/comment_delete/:id', function(request, response){
+  db.collection('comments').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
+    if (err) return res.send(500, err)
+    response.send('OK');
+  })
+});
+
+app.put('/admin/comment_edit/:id', function(request, response){
+  post_comment = request.body;
+  db.collection('comments').findOneAndUpdate( {_id: new MongoId(request.params.id)}, {
+    $set: {message: post_comment.message}
+  }, (err, result) => {
+    if (err) return res.send(err);
+    response.send('OK');
   })
 });
 

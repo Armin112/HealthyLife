@@ -8,11 +8,12 @@ function BlogController($scope, $http, $location){
     };
     var curr_blog_id = $location.search().id; 
     var init = function(){
-      
+      var user_post_comment ="";
         get_all_blogs();
         get_single_blog();
         get_users();
         get_comments();
+        get_user_post_comment();
       }
 
     var get_all_blogs = function (){
@@ -36,7 +37,6 @@ function BlogController($scope, $http, $location){
       var get_users = function (){
         $http.get('/users/myprofile', config).then(function(response){
           $scope.users = response.data;
-        
         }),function(error){
           alert(error.status);
         }
@@ -45,24 +45,64 @@ function BlogController($scope, $http, $location){
       var get_comments = function (){
         $http.get('/admin/get_comments', config).then(function(response){
           $scope.comments = response.data;
-         
-          get_comments();
         }),function(error){
           alert(error.status);
         }
       };
     
+      var get_user_post_comment = function (){
+        $http.get('/admin/user_post_comment', config).then(function(response){
+          $scope.user_comments = response.data;
+          user_post_comment = response.data;
+        }),function(error){
+          alert(error.status);
+        }
+      };
 
       init();
-  
-     
+ 
+
+    
+
       $scope.add_comment = function(user){
         $http.post('/admin/add_comment', user,  config).then(function(response){
           $scope.user = null;   
           $scope.message_success = "Congratulations, you are successfully added new comment on this post.";
+          $timeout(function(){ 
+            $scope.message_success = "";
+          },3000);
+          get_comments();
+          get_user_post_comment();
         }, function(error){
           console.log(error);
         });
-}
+      }
+
+      $scope.delete_comment = function(id){
+        $http.delete('/admin/comment_delete/'+id, config).then(function(response){
+          get_comments();
+          get_user_post_comment();
+            $scope.message_success = "You are successfully removed comment from this post.";
+            $timeout(function(){ 
+                $scope.message_success = "";
+              },3000);
+           
+        }, function(error){
+          console.log(error);
+        });
+      }
+
+      $scope.edit_comment = function(user_comment, id){
+        $http.put('/admin/comment_edit/'+id, user_comment,config).then(function(response){
+            $scope.message_success = "Congratulations, you are successfully updated your comment.";
+            $timeout(function(){ 
+              $scope.message_success = "";
+            },3000);
+            get_comments();
+            get_user_post_comment();
+        }, function(error){
+          console.log(error);
+        });
+      }
 
 }
