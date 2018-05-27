@@ -2111,3 +2111,51 @@ margin-top:50px;}
     font-weight: 400;
     border-radius: 5px;
 }
+
+.like {
+    float: left;
+    width: 30px;
+    height: 30px;
+    background-size: contain !important;
+    padding-left: 50px;
+    padding-top: 4px;
+}
+
+.unlike {
+    float: right;
+    width: 30px;
+    height: 30px;
+    background-size: contain !important;
+    padding-right: 50px;
+    padding-top: 4px;
+    background-position: right !important;
+}
+
+.suggested-drugs .like, .suggested-drugs .unlike{
+    float:right;
+    width:23px;
+    height:23px;
+}
+
+.suggested-drugs .unlike {
+    margin-left: 50px;
+    background-position: left !important;
+    padding-left: 33px;
+    padding-right: 20px;
+}
+
+.like.empty{
+    background: url(../images/like_empty.png) no-repeat center;
+}
+
+.unlike.empty{
+    background: url(../images/unlike_empty.png) no-repeat center;
+}
+
+.like.full{
+    background: url(../images/like_full.png) no-repeat center;
+}
+
+.unlike.full{
+    background: url(../images/unlike_full.png) no-repeat center;
+}

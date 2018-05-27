@@ -122,21 +122,25 @@
           templateUrl : "views/index.html",
           controller : "indexController"
       })
+      .when("/searched_diseases", {
+          templateUrl : "views/searched-diseases.html",
+          controller : "indexController"
+      })
       .when("/about", {
           templateUrl : "views/about.html",
           controller : "aboutController"
       })
       .when("/fruits", {
           templateUrl : "views/fruits.html",
-          controller : "fruitsController"
+          controller : "drugController"
       })
       .when("/herbs", {
           templateUrl : "views/herbs.html",
-          controller : "herbsController"
+          controller : "drugController"
       })
       .when("/vegetables", {
           templateUrl : "views/vegetables.html",
-          controller : "vegetablesController"
+          controller : "drugController"
       })
       .when("/blog", {
           templateUrl : "views/blog.html",

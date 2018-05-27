@@ -240,6 +240,33 @@ app.get('/admin/all_drugs', function(request, response){
   })
 });
 
+//GET ALL HERB DRUGS
+app.get('/admin/all_drugs_herbs', function(request, response){
+  db.collection('drug').find({category: "Herbs"}).toArray((err, drugs) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(drugs);
+  })
+});
+
+//GET ALL DRUGS
+app.get('/admin/all_drugs_fruits', function(request, response){
+  db.collection('drug').find({category: "Fruits"}).toArray((err, drugs) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(drugs);
+  })
+});
+
+//GET ALL VEGETABLES DRUGS
+app.get('/admin/all_drugs_vegetables', function(request, response){
+  db.collection('drug').find({category: "Vegetables"}).toArray((err, drugs) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(drugs);
+  })
+});
+
 //DELETE DRUG
 app.delete('/admin/drug_delete/:id', function(request, response){
   db.collection('drug').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
@@ -314,6 +341,16 @@ app.put('/admin/comment_edit/:id', function(request, response){
   }, (err, result) => {
     if (err) return res.send(err);
     response.send('OK');
+  })
+});
+
+//GET SEARCHED DISEASES
+app.get('/admin/get_searched_diseases/:key', function(request, response){
+  db.collection('disease').find({title: request.params.key }).toArray((err, searched_diseases) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(searched_diseases);
+    
   })
 });
 

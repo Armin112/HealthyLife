@@ -55,8 +55,7 @@ function BlogController($scope, $http, $location){
       $http.post('/admin/add_comment', user,  config).then(function(response){
         $scope.user = null;
         get_comments();
-        get_user_post_comment();
-           
+        get_user_post_comment();      
         $scope.message_success = "Congratulations, you are successfully added new comment on this post.";
         $timeout(function(){ 
           $scope.message_success = "";

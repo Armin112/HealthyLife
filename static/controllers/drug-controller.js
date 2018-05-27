@@ -13,6 +13,10 @@ function DrugController($scope, $http, $location){
         get_single_drug();
         get_comments();
         get_user_post_comment();
+        get_all_drugs_vegetables();
+        get_all_drugs_herbs();
+        get_all_drugs_fruits();
+
       }
 
     var get_all_drugs = function (){
@@ -22,6 +26,30 @@ function DrugController($scope, $http, $location){
           alert(error.status);
         }
     };
+
+    var get_all_drugs_herbs = function (){
+      $http.get('/admin/all_drugs_herbs').then(function(response){
+        $scope.herb_drugs = response.data;
+      }),function(error){
+        alert(error.status);
+      }
+  };
+
+  var get_all_drugs_fruits = function (){
+    $http.get('/admin/all_drugs_fruits').then(function(response){
+      $scope.fruit_drugs = response.data;
+    }),function(error){
+      alert(error.status);
+    }
+};
+
+var get_all_drugs_vegetables = function (){
+  $http.get('/admin/all_drugs_vegetables').then(function(response){
+    $scope.vegetable_drugs = response.data;
+  }),function(error){
+    alert(error.status);
+  }
+};
 
     var get_single_drug = function (){
       $http.get('/admin/single_drug/'+curr_drug_id).then(function(response){

@@ -48,15 +48,19 @@
              <div class="bitcoin-about-bg">
               <div class="row">
                <div class="col-md-12">
-                    <form action="" method="POST" id="mc-embedded-search-form" name="mc-embedded-search-form">
+                    <form id="" novalidate name="serchDisease">
                              
               <div id="mc_embed_signup_scroll_2" class="col-md-10 pull-left">
-                <input id="search" class="form-control" type="text" placeholder="Enter disease and press enter or submit..." name="disease" value="" style="background: rgba(255,255,255,0.4); ">
+                <input id="search" class="form-control" type="text" placeholder="Enter disease and press enter or submit..." name="disease" value="" ng-model="search" style="background: rgba(255,255,255,0.4); ">
               </div>
              
               
                 <div class="clear col-md-2 pull-right">
-                  <button type="submit" name="submitbtn" id="mc-embedded-subscribe" class="button mt-20 form-button" style="background: #ffffff !important; color: #fab41b;margin-top: 0 !important;padding: 13px 40px;">  Submit </button>
+                 
+
+                  <a href="#!searched_diseases?key={{search}}" id="mc-embedded-subscribe" class="button mt-20 form-button" style="background: #ffffff !important; color: #fab41b;margin-top: 0 !important;padding: 13px 40px;">
+                      Submit </a>
+                  
                 </div>
               </form>
                      </div>
@@ -79,53 +83,23 @@
         </div>
   <div class="col-lg-12 ">
             <div class=" text-black">
-                 <div class="owl-carousel" data-nav-dots="true" data-items="3" data-md-items="3" data-sm-items="3">
-           <div class="col-lg-12 col-md-12 col-sm-12 xs-mb-30">
+                 <div class="" data-nav-dots="true" data-items="3" data-md-items="3" data-sm-items="3">
+           <div class="col-lg-4 col-md-4 col-sm-4 xs-mb-30 pull-left" ng-repeat="disease in diseases | limitTo:3">
            <div class="blog-box blog-2 white-bg active">
               <div class="feature-image mb-20">
                  <img alt="" src="images/empty-template.jpg" class="img-fluid">
                </div>
               <div class="blog-info">
-                <h4 class="text-black"> <a href="#"> Caroli Disease </a> </h4>
-                 <strong class="theme-color">Fruits</strong>
-                 <p class="mt-15">Quibusdam dolor sit amet, consectetur adipisicing elit. Vero quod conseqt, enim expedita  nesciunt incidunt accusamus necessitatibus modi.</p>
+                <h4 class="text-black"> <a href="/#!single-disease?id={{disease._id}}"> {{disease.title}} </a> </h4>
+                 
+                 <p class="mt-15">{{disease.excerpt}}</p>
                  <strong class="theme-color">SUGGESTED DRUGS</strong>
-               <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#">   Drug 1</a></span> <span style="float:right; font-weight:400">350 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>4 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-                <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 2</a></span> <span style="float:right; font-weight:400">310 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>2 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-                  <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 3</a></span> <span style="float:right; font-weight:400">234 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>14 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-              </div>
-           </div>
-         </div>
-         <div class="col-lg-12 col-md-12 col-sm-12 xs-mb-30">
-           <div class="blog-box blog-2 white-bg active">
-              <div class="feature-image mb-20">
-                 <img alt="" src="images/empty-template.jpg" class="img-fluid">
-               </div>
-              <div class="blog-info">
-                <h4 class="text-black"> <a href="#"> Cystic Fibrosis </a> </h4>
-                 <strong class="theme-color">Herbs</strong>
-  
-                 <p class="mt-15">Nesciunt incidunt accusamus necessitatibus modi adipisci officia sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia.</p>
-                  <strong class="theme-color">SUGGESTED DRUGS</strong>
-               <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 1</a></span> <span style="float:right; font-weight:400">350 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>4 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-                <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 2</a></span> <span style="float:right; font-weight:400">310 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>2 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-                  <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 3</a></span> <span style="float:right; font-weight:400">234 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>14 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-              </div>
-           </div>
-         </div>
-         <div class="col-lg-12 col-md-12 col-sm-12">
-           <div class="blog-box blog-2 white-bg active">
-              <div class="feature-image mb-20">
-                 <img alt="" src="images/empty-template.jpg" class="img-fluid">
-               </div>
-              <div class="blog-info">
-                <h4 class="text-black"> <a href="#"> Friedreich Ataxia </a> </h4>
-                 <strong class="theme-color">Vegetables</strong>
-                 <p class="mt-15">Enim expedita  nesciunt incidunt accusamus necessitatibus modi adipisci officia sed quia nesciunt incidunt accusamus necessitatibus modi.</p>
-                 <strong class="theme-color">SUGGESTED DRUGS</strong>
-               <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 1</a></span> <span style="float:right; font-weight:400">350 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>4 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-                <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 2</a></span> <span style="float:right; font-weight:400">310 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>2 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-                   <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 3</a></span> <span style="float:right; font-weight:400">234 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>14 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
+               <h4 class="mt-15 suggested-drugs" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#">   Drug 1</a></span>  
+                <a href="#"><span class="unlike empty">4</span></a> 
+                <a href="#"><span class="like empty">350</span></a>
+               
+              </h4>
+                
               </div>
            </div>
          </div>
@@ -159,21 +133,21 @@
                  <div class="col-md-4 col-sm-4 mt-50">
                    <div class="counter text-white">
                       <span class="ti-heart-broken icon" aria-hidden="true"></span>
-                      <span class="timer" data-to="234" data-speed="10000">234</span>
+                      <span class="timer" data-to="234" data-speed="10000">{{num_of_diseases}}</span>
                       <label>Different diseases</label>
                     </div>
                  </div>
                  <div class="col-md-4 col-sm-4 mt-50">
                    <div class="counter text-white">
                       <span class="ti-crown icon" aria-hidden="true"></span>
-                      <span class="timer" data-to="1025" data-speed="10000">1025</span>
+                      <span class="timer" data-to="1025" data-speed="10000">{{num_of_drugs}}</span>
                       <label>Different type of natural drugs</label>
                     </div>
                  </div>
                  <div class="col-md-4 col-sm-4 mt-50">
                    <div class="counter text-white">
                       <span class="ti-user icon" aria-hidden="true"></span>
-                      <span class="timer" data-to="435" data-speed="10000">435</span>
+                      <span class="timer" data-to="435" data-speed="10000">{{num_of_users}}</span>
                       <label>Number of users</label>
                     </div>
                  </div>
