@@ -95,6 +95,7 @@
 <script src="controllers/myprofile-controller.js"></script>
 <script src="controllers/admin-controller.js"></script>
 <script src="controllers/disease-controller.js"></script>
+<script src="controllers/drug-controller.js"></script>
 <script>
   var app = angular.module("healthylife-app", ["ngRoute", "xeditable", "ui.bootstrap"]);
   app.controller('indexController', IndexController);
@@ -109,6 +110,7 @@
   app.controller('myprofileController', MyProfileController);
   app.controller('adminController', AdminController);
   app.controller('diseaseController', DiseaseController);
+  app.controller('drugController', DrugController);
 
   app.config(function($routeProvider) {
       $routeProvider
@@ -168,6 +170,10 @@
           templateUrl : "views/add-blog.html",
           controller : "adminController"
       })
+      .when("/edit-blog", {
+          templateUrl : "views/edit-blog.html",
+          controller : "adminController"
+      })
       .when("/single-blog", {
           templateUrl : "views/blog-single.html",
           controller : "blogController"
@@ -180,9 +186,29 @@
           templateUrl : "views/add-disease.html",
           controller : "adminController"
       })
+      .when("/edit-disease", {
+          templateUrl : "views/edit-disease.html",
+          controller : "adminController"
+      })
       .when("/single-disease", {
           templateUrl : "views/disease-single.html",
           controller : "diseaseController"
+      })
+      .when("/drug-admin", {
+          templateUrl : "views/drug-admin.html",
+          controller : "adminController"
+      })
+      .when("/add-drug", {
+          templateUrl : "views/add-drug.html",
+          controller : "adminController"
+      })
+      .when("/edit-drug", {
+          templateUrl : "views/edit-drug.html",
+          controller : "adminController"
+      })
+      .when("/single-drug", {
+          templateUrl : "views/drug-single.html",
+          controller : "drugController"
       })
   });
 </script>

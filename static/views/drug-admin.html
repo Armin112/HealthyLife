@@ -4,12 +4,12 @@
         <div class="row"> 
             <div class="col-lg-12"> 
                 <div class="page-title-name">
-                    <h1>All Diseases</h1>
-                    <p>View or delete diseases on your site.</p>
+                    <h1>All Drugs</h1>
+                    <p>View or delete drugs drugs on your site.</p>
                 </div>
                 <ul class="page-breadcrumb">
                     <li><a href="#"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
-                    <li><a href="#">All Diseases</a> <i class="fa fa-angle-double-right"></i></li>
+                    <li><a href="#">All Drugs</a> <i class="fa fa-angle-double-right"></i></li>
                 </ul>
         </div>
        </div>
@@ -18,20 +18,20 @@
   
 <section class="main-section">
     <div class="container">
-        <div ng-class="getClass('/add-disease')"><a class="button mr-0" href="#!add-disease"  style="padding: 15px 30px;">ADD DISEASE</a></div>     
+        <div ng-class="getClass('/add-drug')"><a class="button mr-0" href="#!add-drug"  style="padding: 15px 30px;">ADD Drug</a></div>     
         <table class="admin-table">
             <tr>
                 <th>Title</th>
                 <th>Date</th>
                 <th>Action</th>
             </tr>
-            <tr ng-repeat="disease in diseases">
-                <td>{{disease.title}}</td>
-                <td>{{disease.date}}</td>
+            <tr ng-repeat="drug in drugs">
+                <td>{{drug.title}}</td>
+                <td>{{drug.date}}</td>
                 <td> 
-                    <a class="btn btn-warning btn-primary btn-lg" href="/#!edit-disease?id={{disease._id}}">Edit</a>
-                    <a class="btn btn-warning btn-simple btn-lg" href="/#!single-disease?id={{disease._id}}">Read More</a>
-                    <button ng-click="delete_disease(disease._id)" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">
+                    <a class="btn btn-warning btn-primary btn-lg" href="/#!edit-drug?id={{drug._id}}">Edit</a>
+                    <a class="btn btn-warning btn-simple btn-lg" href="/#!single-drug?id={{drug._id}}">Read More</a>
+                    <button ng-click="delete_drug(drug._id)" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">
                     Delete
                     </button>
                 </td>

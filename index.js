@@ -142,6 +142,18 @@ app.delete('/admin/blog_delete/:id', function(request, response){
   })
 });
 
+//EDIT SINGLE BLOG POST
+app.put('/admin/blog_edit/:id', function(request, response){
+  edit_blog = request.body;
+  var excerpt = edit_blog.content.substring(0, 80);
+  db.collection('blog').findOneAndUpdate( {_id: new MongoId(request.params.id) }, {
+    $set: {title: edit_blog.title, content: edit_blog.content, excerpt: excerpt, tags: edit_blog.tags, image: edit_blog.image  }
+  }, (err, result) => {
+    if (err) return res.send(err);
+    response.send('OK');
+  })
+});
+
 //GET SINGLE BLOG POST
 app.get('/admin/single_blog/:id', function(request, response){
   db.collection('blog').find({_id: new MongoId(request.params.id)}).toArray((err, single_blog) => {
@@ -183,12 +195,77 @@ app.delete('/admin/disease_delete/:id', function(request, response){
   })
 });
 
+//EDIT SINGLE DISEASE
+app.put('/admin/disease_edit/:id', function(request, response){
+  edit_disease = request.body;
+  var excerpt = edit_disease.content.substring(0, 80);
+  db.collection('disease').findOneAndUpdate( {_id: new MongoId(request.params.id) }, {
+    $set: {title: edit_disease.title, content: edit_disease.content, excerpt: excerpt, tags: edit_disease.tags, image: edit_disease.image  }
+  }, (err, result) => {
+    if (err) return res.send(err);
+    response.send('OK');
+  })
+});
+
 //GET SINGLE DISEASE
 app.get('/admin/single_disease/:id', function(request, response){
   db.collection('disease').find({_id: new MongoId(request.params.id)}).toArray((err, single_disease) => {
     if (err) return console.log(err);
     response.setHeader('Content-Type', 'application/json');
     response.send(single_disease);
+    cur_blog_id = request.params.id;
+  })
+});
+
+//ADD NEW DRUG
+app.post('/admin/add_drug', function(request, response){
+  var add_drug = request.body;
+  var excerpt = add_drug.content.substring(0, 80);
+  upload(request, response, function(err) { 
+    if (err) return console.log(err);
+    db.collection('drug').save({'title': add_drug.title, 'content': add_drug.content, excerpt: excerpt, 'category':add_drug.category,
+     'tags': add_drug.tags, 'image': add_drug.image, 'date': date}, (err, result) => {
+      if (err) return console.log(err);
+      response.send('OK');
+    })
+  }); 
+});
+
+//GET ALL DRUGS
+app.get('/admin/all_drugs', function(request, response){
+  db.collection('drug').find().toArray((err, drugs) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(drugs);
+  })
+});
+
+//DELETE DRUG
+app.delete('/admin/drug_delete/:id', function(request, response){
+  db.collection('drug').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
+    if (err) return res.send(500, err)
+    response.send('OK');
+  })
+});
+
+//EDIT SINGLE DRUG
+app.put('/admin/drug_edit/:id', function(request, response){
+  edit_drug = request.body;
+  var excerpt = edit_drug.content.substring(0, 80);
+  db.collection('drug').findOneAndUpdate( {_id: new MongoId(request.params.id) }, {
+    $set: {title: edit_drug.title, content: edit_drug.content, excerpt: excerpt, category: edit_drug.category, tags: edit_drug.tags, image: edit_drug.image  }
+  }, (err, result) => {
+    if (err) return res.send(err);
+    response.send('OK');
+  })
+});
+
+//GET SINGLE DRUG
+app.get('/admin/single_drug/:id', function(request, response){
+  db.collection('drug').find({_id: new MongoId(request.params.id)}).toArray((err, single_drug) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(single_drug);
     cur_blog_id = request.params.id;
   })
 });

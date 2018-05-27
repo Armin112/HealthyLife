@@ -1,152 +1,130 @@
 <div ng-repeat="blog in single_blog">
 <section class="page-title bg-overlay-black-60 parallax" data-jarallax='{"speed": 0.6}' style="background-image: url(images/slider-bg.jpg);">
-  <div class="container">
-    <div class="row"> 
-      <div class="col-lg-12"> 
-      <div class="page-title-name">
-         <h1>{{blog.title}} </h1>
-         
-          
-        </div>
-          <ul class="page-breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
-            <li><a href="#">Blog</a> <i class="fa fa-angle-double-right"></i></li>
-            <li><span>{{blog.title}}</span> </li>
-       </ul>
-     </div>
-   </div>
-  </div>
+    <div class="container">
+        <div class="row"> 
+            <div class="col-lg-12"> 
+                <div class="page-title-name">
+                    <h1>{{blog.title}} </h1>  
+                </div>
+                <ul class="page-breadcrumb">
+                    <li><a href="#"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
+                    <li><a href="#">Blog</a> <i class="fa fa-angle-double-right"></i></li>
+                    <li><span>{{blog.title}}</span> </li>
+                </ul>
+            </div>
+         </div>
+    </div>
 </section>
 
 
 <section class="blog blog-single white-bg page-section-ptb">
-  <div class="container">
-    <div class="row">
-    
-<!-- ========================== -->
-   <div class="col-lg-12">
-       <div class="blog-entry mb-10">
-            <div class="entry-image clearfix">
-              <img class="img-fluid" src="images/blog-big-template.jpg" alt="">
-          </div>
-          <div class="blog-detail">
-              <div class="entry-meta mb-10">
-                  <ul>
-               
-                      <li><a href="#"><i class="fa fa-comment-o"></i> 5</a></li>
-                      <li><a href="#"><i class="fa fa-calendar-o"></i> {{blog.date}}</a></li>
-                  </ul>
-              </div>
-          </div>
-       </div>
-         <div class="blog-entry entry-content mt-20 mb-30 post-1 clearfix">
-          <p>{{blog.content}}</p>                     
-           <div class="entry-share clearfix">
-                 <div class="tags">
-                    <h5>Tags:</h5>
-                    <ul>
-                      <li><a>{{blog.tags}}</a></li>
-                     
-                    </ul>
-                </div>
-                  
-              </div>
-          </div>
-
- <div class="related-work mt-40">
-   <div class="row">
-    <div class="col-ld-12 col-md-12">
-         <h3 class="theme-color mb-20">Related Blog Post</h3>  
-        
-          <div class="item" ng-repeat="blog2 in blogs" style="width:33%; display:inline-block">
-            <div class="blog-box blog-1 active">        
-                 <div class="blog-info">
-                  <span class="post-category"><a href="#">Blog</a></span>
-                  <h4> <a href="#"> {{blog2.title}}</a></h4>
-                  <p>{{blog2.excerpt}}</p>
-                  <span><i class="fa fa-user"></i> By Admin</span>
-                  <span><i class="fa fa-calendar-check-o"></i> {{blog2.date}} </span>
-                  <div class="entry-button" style="margin-top: 20px;">
-                        <a class="button arrow" href="/#!single-blog?id={{blog2._id}}">Read More<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="blog-entry mb-10">
+                    <div class="entry-image clearfix">
+                        <img class="img-fluid" src="images/blog-big-template.jpg" alt="">
                     </div>
-                  </div>  
-                  <div class="blog-box-img" style="background-image:url(images/blog-big-template.jpg);"></div>
+                    <div class="blog-detail">
+                        <div class="entry-meta mb-10">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-comment-o"></i> 5</a></li>
+                                <li><a href="#"><i class="fa fa-calendar-o"></i> {{blog.date}}</a></li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-entry entry-content mt-20 mb-30 post-1 clearfix">
+                    <p>{{blog.content}}</p>                     
+                <div class="entry-share clearfix">
+                    <div class="tags">
+                        <h5>Tags:</h5>
+                        <ul>
+                            <li><a>{{blog.tags}}</a></li>
+                        </ul>
+                    </div>   
                 </div>
             </div>
-           
-           
-       </div>
-      </div>
-     </div>
- <!-- ================================================ -->
-  <div class="blog-comments mt-40">
-      <div class="comments-1" ng-repeat="comment in comments" style="width:100%">
-         <div class="comments-photo">
-           <img class="img-fluid" src="images/person-template.jpg" alt="">
-          </div>
-           <div class="comments-info">
-           <h4 class="theme-color"> {{comment.firstname}} {{comment.lastname}} <span>{{comment.date}}</span></h4>
-            <div class="port-post-social float-right" ng-if="is_admin()">
-                    <button ng-click="delete_comment(user_comment._id)" type="button" rel="tooltip" title="Remove" class="comment-button btn-simple">
-                            Delete
-                        </button>
+
+            <div class="related-work mt-40">
+                <div class="row">
+                    <div class="col-ld-12 col-md-12">
+                        <h3 class="theme-color mb-20">Related Blog Post</h3>  
+                        <div class="item" ng-repeat="blog2 in blogs" style="width:33%; display:inline-block">
+                            <div class="blog-box blog-1 active">        
+                                <div class="blog-info">
+                                    <span class="post-category"><a href="#">Blog</a></span>
+                                    <h4> <a href="#"> {{blog2.title}}</a></h4>
+                                    <p>{{blog2.excerpt}}</p>
+                                    <span><i class="fa fa-user"></i> By Admin</span>
+                                    <span><i class="fa fa-calendar-check-o"></i> {{blog2.date}} </span>
+                                    <div class="entry-button" style="margin-top: 20px;">
+                                        <a class="button arrow" href="/#!single-blog?id={{blog2._id}}">Read More<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>  
+                                <div class="blog-box-img" style="background-image:url(images/blog-big-template.jpg);"></div>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
             </div>
-              <p>{{comment.message}}</p>
-         </div>
-         </div> 
+ <!-- ================================================ -->
+            <div class="blog-comments mt-40">
+                <div class="comments-1" ng-repeat="comment in comments" style="width:100%">
+                    <div class="comments-photo">
+                        <img class="img-fluid" src="images/person-template.jpg" alt="">
+                    </div>
+                    <div class="comments-info">
+                        <h4 class="theme-color"> {{comment.firstname}} {{comment.lastname}} <span>{{comment.date}}</span></h4>
+                        <div class="port-post-social float-right" ng-if="is_admin()">
+                            <button ng-click="delete_comment(user_comment._id)" type="button" rel="tooltip" title="Remove" class="comment-button btn-simple">
+                                Delete
+                            </button>
+                        </div>
+                        <p>{{comment.message}}</p>
+                    </div>
+                </div> 
          
-         <div class="comments-1" ng-repeat="user_comment in user_comments" style="width:100%">
-                <div class="comments-photo">
-                  <img class="img-fluid" src="images/person-template.jpg" alt="">
-                 </div>
-                  <div class="comments-info">
-                  <h4 class="theme-color"> {{user_comment.firstname}} {{user_comment.lastname}} <span>{{user_comment.date}}</span></h4>
-                   <div class="port-post-social float-right">
-                    <button ng-click="edit_comment(user_comment._id)" type="button" rel="tooltip" title="Remove" class="comment-button btn-simple">
+                <div class="comments-1" ng-repeat="user_comment in user_comments" style="width:100%">
+                    <div class="comments-photo">
+                        <img class="img-fluid" src="images/person-template.jpg" alt="">
+                    </div>
+                    <div class="comments-info">
+                        <h4 class="theme-color"> {{user_comment.firstname}} {{user_comment.lastname}} <span>{{user_comment.date}}</span></h4>
+                        <div class="port-post-social float-right">
+                        <button ng-click="edit_comment(user_comment._id)" type="button" rel="tooltip" title="Remove" class="comment-button btn-simple">
                         Edit
-                    </button>
-                      <button ng-click="delete_comment(user_comment._id)" type="button" rel="tooltip" title="Remove" class="comment-button btn-simple">
+                        </button>
+                        <button ng-click="delete_comment(user_comment._id)" type="button" rel="tooltip" title="Remove" class="comment-button btn-simple">
                         Delete
                         </button>
-                   </div>
-                     <p>{{user_comment.message}}</p>
-                     
+                    </div>
+                     <p>{{user_comment.message}}</p> 
                      <form name="editComment" novalidate style="border: 1px solid #e4e4e4; padding: 10px;">
-                            <div class="section-field mb-20 col-sm-12">
-                               <label class="mb-10" for="name" style="font-size: 12px; color: #ccc;border-bottom: 1px solid #e4e4e4;width: 100%;">Edit your comment </label>
-                                    <textarea id="message" placeholder="Edit Message" class="web form-control" style="height:50px;" name="message" ng-model="user_comment.message"
-                                     pattern=".{20,}" required>{{user_comment.message}}</textarea>
-                               <span style="color:red; font-size:12px;" ng-show="addComment.message.$touched && addComment.message.$invalid">
-                               <span ng-show="addComment.message.$error.required">You need to enter minimum 20 chars.</span>
-                               </span>
-                           </div>
-                           <button ng-click="edit_comment(user_comment, user_comment._id)" style="font-size:12px" ng-disabled="!editComment.$valid" class="button" type="submit">Edit Comment <i class="fa fa-check"></i></button>
-                           </form>
-                           
-                </div>
-                
-                </div>
-               
-  </div>
+                        <div class="section-field mb-20 col-sm-12">
+                            <label class="mb-10" for="name" style="font-size: 12px; color: #ccc;border-bottom: 1px solid #e4e4e4;width: 100%;">Edit your comment </label>
+                            <textarea id="message" placeholder="Edit Message" class="web form-control" style="height:50px;" name="message" ng-model="user_comment.message"
+                            pattern=".{20,}" required>{{user_comment.message}}</textarea>
+                            <span style="color:red; font-size:12px;" ng-show="addComment.message.$touched && addComment.message.$invalid">
+                            <span ng-show="addComment.message.$error.required">You need to enter minimum 20 chars.</span>
+                            </span>
+                        </div>
+                        <button ng-click="edit_comment(user_comment, user_comment._id)" style="font-size:12px" ng-disabled="!editComment.$valid" class="button" type="submit">Edit Comment <i class="fa fa-check"></i></button>
+                      </form>          
+                </div>   
+            </div>           
+        </div>
  <!-- ================================================ -->
 <br/>
  <div class="row">
-       <div class="col-lg-12 col-md-12">
-            
+       <div class="col-lg-12 col-md-12">   
        <h3 class="theme-color mb-30">Leave a Reply </h3> 
        <div ng-repeat="user in users">
             <p class="logged-as">You are logged in as {{user.firstname}} {{user.lastname}}.</p>
         </div>
-       
-       
        <form name="addComment" novalidate>
             <div class="login-box pb-50 clearfix white-bg">
-                     
-                
-                   
-                    <div ng-repeat="user in users">
-                           
-                          
+                    <div ng-repeat="user in users"></div>                                    
                     <input id="name" class="web form-control" type="hidden"  name="firstname" value="{{user.firstname}}"  ng-model="user.firstname" required>
                     <input id="lastname" class="web form-control" type="hidden"  name="lastname" value="{{user.lastname}}" ng-model="user.lastname" required>
                     <input type="hidden"  class="form-control" name="username" value="{{user.username}}" ng-model="user.username" required>

@@ -33,10 +33,12 @@
             <td>{{blog.title}}</td>
             <td>{{blog.date}}</td>
             <td> 
-                <button ng-click="delete_blog(blog._id)" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">
-                Delete
-            </button>
+               
+                    <a class="btn btn-warning btn-primary btn-lg" href="/#!edit-blog?id={{blog._id}}">Edit</a>
             <a class="btn btn-warning btn-simple btn-lg" href="/#!single-blog?id={{blog._id}}">Read More</a>
+            <button ng-click="delete_blog(blog._id)" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">
+                    Delete
+                </button>
         </td>
         </tr>
     </table>

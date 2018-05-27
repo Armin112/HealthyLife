@@ -1,0 +1,81 @@
+
+<section class="page-title bg-overlay-black-60 parallax" data-jarallax='{"speed": 0.6}' style="background-image: url(images/slider-bg.jpg);">
+    <div class="container">
+      <div class="row"> 
+        <div class="col-lg-12"> 
+        <div class="page-title-name">
+            <h1>Edit Drug</h1>
+            <p>Edit Drug on your site.</p>
+          </div>
+            <ul class="page-breadcrumb">
+              <li><a href="#"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
+              <li><a href="#">Edit Drug</a> <i class="fa fa-angle-double-right"></i></li>
+             
+         </ul>
+       </div>
+       </div>
+    </div>
+  </section>
+  
+  <section class="main-section">
+      <div class="container">
+         
+            <form ng-repeat="drug in single_drug" name="editDrug" enctype="multipart/form-data" novalidate class="col-md-10 edit-user-form" style="margin: 30px auto;">
+
+                    <div class="login-box pb-50 clearfix white-bg">
+                         
+                      <div class="row">
+                         <div class="section-field mb-20 col-sm-12">
+                           <label class="mb-10" for="name">Drug Title </label>
+                             <input id="title" class="web form-control" type="text"  name="title"  ng-model="drug.title" required>
+                              <span style="color:red; font-size:12px;" ng-show="editDrug.title.$touched && editDrug.title.$invalid">
+                                <span ng-show="editDrug.title.$error.required">Title is required.</span>
+                              </span>
+                          </div>
+                           <div class="section-field mb-20 col-sm-12">
+                           <label class="mb-10" for="name">Drug Content </label>
+                             <textarea id="content" class="web form-control" style="height:300px;" name="content" ng-model="drug.content" pattern=".{50,}" required></textarea>
+                             <span style="color:red; font-size:12px;" ng-show="editDrug.content.$touched && editDrug.content.$invalid">
+                                <span ng-show="editDrug.content.$error.required">You need to enter minimum 50 chars.</span>
+                              </span>
+                          </div>
+                          <div class="section-field mb-20 col-sm-12">
+                                <label class="mb-10" for="name">Drug Category </label>
+                                  <select id="category" class="web form-control" name="category" ng-model="drug.category" style="height:unset" required>
+                                      <option value="{{drug.category}}">{{drug.category}}</option>
+                                      <option value="Herbs">Herbs</option>
+                                      <option value="Fruits">Fruits</option>
+                                      <option value="Vegetables">Vegetables</option>
+                                  </select>
+                                  <span style="color:red; font-size:12px;" ng-show="addDrug.content.$touched && addDrug.content.$invalid">
+                                     <span ng-show="addDrug.content.$error.required">Category is required.</span>
+                                   </span>
+                            </div>
+                          <div class="section-field mb-20 col-sm-12">
+                                <label class="mb-10" for="name">Tags </label>
+                                  <input id="tags" class="web form-control" type="text"  name="tags"  ng-model="drug.tags">
+                               </div>
+                            <div class="section-field mb-20 col-sm-12">
+                           <label class="mb-10" for="name">Image </label>
+                             <input id="image" class="web form-control" type="file"  name="image"  ng-model="drug.image">
+                              <span style="color:red; font-size:12px;" ng-show="editDrug.image.$touched && editDrug.image.$invalid">
+                                <span ng-show="editDrug.image.$error.required">Image is required.</span>
+                              </span>
+                          </div>
+                        </div>
+                       
+                        
+                       
+                        <button ng-click="edit_drug(drug)" ng-disabled="!editDrug.$valid" class="button" type="submit">Edit Drug <i class="fa fa-check"></i></button>
+                      
+                      </div>
+            
+                   
+                    </form>
+
+                   
+    <p style="color: green;margin: 40px;text-align: center;font-size: 16px;"> {{message_success}}</p>
+
+</div>
+</section>
+
