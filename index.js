@@ -170,8 +170,9 @@ app.post('/admin/add_disease', function(request, response){
   var excerpt = add_disease.content.substring(0, 80);
   upload(request, response, function(err) { 
     if (err) return console.log(err);
-    db.collection('disease').save({'title': add_disease.title, 'content': add_disease.content, excerpt: excerpt, 'tags': add_disease.tags
-    , 'image': add_disease.image, 'date': date}, (err, result) => {
+    db.collection('disease').save({'title': add_disease.title, 'content': add_disease.content, excerpt: excerpt,
+     'tags': add_disease.tags, 'image': add_disease.image, 'suggested_drug': add_disease.suggested_drug,
+      'suggested_drug_unlikes': 0 , 'suggested_drug_likes': 0, 'date': date}, (err, result) => {
       if (err) return console.log(err);
       response.send('OK');
     })
@@ -351,6 +352,54 @@ app.get('/admin/get_searched_diseases/:key', function(request, response){
     response.setHeader('Content-Type', 'application/json');
     response.send(searched_diseases);
     
+  })
+});
+
+//UNLIKE DRUG
+app.post('/admin/unlike_drug', function(request, response){
+  var data_info = request.body;
+      db.collection('unlike').save({'user': cur_user, 'disease': data_info._id, 'drug': data_info.suggested_drug,
+      'date': date}, (err, result) => {
+        if (err) return console.log(err);
+      })
+      db.collection('disease').findOneAndUpdate( {_id: new MongoId(data_info._id)}, {
+        $set: {suggested_drug_unlikes: data_info.suggested_drug_unlikes+1}
+      }, (err, result) => {
+        if (err) return res.send(err);
+         response.send("OK");  
+      })
+});
+
+//GET ALL UNLIKES
+app.get('/admin/all_unlikes', function(request, response){
+  db.collection('unlike').find({ user : cur_user }).toArray((err, unlikes) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(unlikes);
+  })
+});
+
+//LIKE DRUG
+app.post('/admin/like_drug', function(request, response){
+  var data_info = request.body;
+      db.collection('like').save({'user': cur_user, 'disease': data_info._id, 'drug': data_info.suggested_drug,
+      'date': date}, (err, result) => {
+        if (err) return console.log(err);
+      })
+      db.collection('disease').findOneAndUpdate( {_id: new MongoId(data_info._id)}, {
+        $set: {suggested_drug_likes: data_info.suggested_drug_likes+1}
+      }, (err, result) => {
+        if (err) return res.send(err);
+         response.send("OK");  
+      })
+});
+
+//GET ALL LIKES
+app.get('/admin/all_likes', function(request, response){
+  db.collection('like').find({ user : cur_user }).toArray((err, likes) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(likes);
   })
 });
 

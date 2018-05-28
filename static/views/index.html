@@ -93,10 +93,15 @@
                 <h4 class="text-black"> <a href="/#!single-disease?id={{disease._id}}"> {{disease.title}} </a> </h4>
                  
                  <p class="mt-15">{{disease.excerpt}}</p>
-                 <strong class="theme-color">SUGGESTED DRUGS</strong>
-               <h4 class="mt-15 suggested-drugs" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#">   Drug 1</a></span>  
-                <a href="#"><span class="unlike empty">4</span></a> 
-                <a href="#"><span class="like empty">350</span></a>
+                 <strong class="theme-color">SUGGESTED DRUG BY SYSTEM</strong>
+               <h4 class="mt-15 suggested-drugs"><span style="font-weight:600"><a href="/#!single-drug?id={{disease.suggested_drug.substr(0,24)}}">{{disease.suggested_drug.substr(29)}}</a></span>  
+              
+                <button ng-if="!is_unliked_func()" ng-click="unlike_drug(disease)"><span class="unlike empty">{{disease.suggested_drug_unlikes}}</span></button>
+                <button ng-if="is_unliked_func()"><span class="unlike full">{{disease.suggested_drug_unlikes}}</span></button>
+
+                <button ng-if="!is_liked_func()" ng-click="like_drug(disease)"><span class="like empty">{{disease.suggested_drug_likes}}</span></button> 
+                <button ng-if="is_liked_func()"><span class="like full">{{disease.suggested_drug_likes}}</span></button>  
+               
                
               </h4>
                 
@@ -113,7 +118,7 @@
     
    </div>
   </section>
-  
+  <div class="message-success"><p style="color: green; margin-top:40px;"> {{message_success}}</p></div>
   
   <section class="bitcoin-custom-content parallax" style="background: url(images/about-bg.jpg);">
      <div class="container-fluid p-0">

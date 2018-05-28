@@ -7,7 +7,10 @@ function IndexController($scope, $http, $location){
       }
     };
     var num_users = "";
+    var is_unliked = false;
+    var is_liked = false;
     var num_drugs = "";
+    var suggested_drug_id = "";
     var num_diseases = "";
     var searched_key = $location.search().key;
     $scope.searched_key = searched_key;
@@ -18,12 +21,13 @@ function IndexController($scope, $http, $location){
         get_all_users();
         get_all_drugs();
         get_searched_diseases();
+        get_all_unlikes();
+        get_all_likes();
       }
 
     var get_all_blogs = function (){
         $http.get('/admin/all_blogs').then(function(response){
           $scope.blogs = response.data;
-          console.log(response.data);
         }),function(error){
           alert(error.status);
         }
@@ -72,13 +76,65 @@ function IndexController($scope, $http, $location){
     }
 };
 
+var get_all_unlikes = function (){
+  $http.get('/admin/all_unlikes', config).then(function(response){
+      $scope.unlikes = response.data;
+  }),function(error){
+      alert(error.status);
+  }
+};
+
+var get_all_likes = function (){
+  $http.get('/admin/all_likes', config).then(function(response){
+      $scope.likes = response.data;
+  }),function(error){
+      alert(error.status);
+  }
+};
+
 
   init();
  
- 
-    
-    
+  $scope.unlike_drug = function(disease){
+    suggested_drug_id = disease.suggested_drug.substring(0,24);
+    console.log(suggested_drug_id);
+    $http.post('/admin/unlike_drug', disease, config).then(function(response){
+        get_all_diseases();
+        $scope.message_success = "Congratulations, you are successfully rated drug.";
+        get_all_unlikes();
+        is_unliked = true;
+        is_liked = true;
+    }, function(error){
+        console.log(error);
+    });
+}
 
-  
-   
+$scope.like_drug = function(disease){
+  suggested_drug_id = disease.suggested_drug.substring(0,24);
+  console.log(suggested_drug_id);
+  $http.post('/admin/like_drug', disease, config).then(function(response){
+      get_all_diseases();
+      $scope.message_success = "Congratulations, you are successfully rated drug.";
+      get_all_likes();
+      is_liked = true;
+      is_unliked = true;
+  }, function(error){
+      console.log(error);
+  });
+}
+
+$scope.is_unliked_func = function(){
+  if(is_unliked == true){
+      return true;  
+  }
+  return false;
+}
+
+$scope.is_liked_func = function(){
+  if(is_liked == true){
+      return true;  
+  }
+  return false;
+}
+
 }

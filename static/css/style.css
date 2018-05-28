@@ -2098,7 +2098,7 @@ margin-top:50px;}
     text-align: center;
     width: 100%;
     left: 0;
-    padding: 20px;
+   z-index:99;
 }
 
 .message-success p {
@@ -2134,6 +2134,7 @@ margin-top:50px;}
 .suggested-drugs .like, .suggested-drugs .unlike{
     float:right;
     width:23px;
+    font-weight:500;
     height:23px;
 }
 
@@ -2142,6 +2143,14 @@ margin-top:50px;}
     background-position: left !important;
     padding-left: 33px;
     padding-right: 20px;
+}
+
+.suggested-drugs button {
+    width: unset;
+    background: none;
+    border: none;
+    cursor:pointer;
+    display: contents;
 }
 
 .like.empty{
@@ -2158,4 +2167,9 @@ margin-top:50px;}
 
 .unlike.full{
     background: url(../images/unlike_full.png) no-repeat center;
+}
+
+strong.theme-color {
+    font-size: 13px;
+    font-weight: 500;
 }

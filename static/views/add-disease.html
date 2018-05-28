@@ -50,6 +50,16 @@
                                 <span ng-show="addDisease.image.$error.required">Image is required.</span>
                               </span>
                           </div>
+                          <div class="section-field mb-20 col-sm-12">
+                            <label class="mb-10" for="name">Select drug which is recommended for this disease by your system </label>
+                              <select id="category" class="web form-control" name="category" ng-model="disease.suggested_drug" style="height:unset" required>
+                                  <option value="">Select Drug</option>
+                                  <option ng-repeat="drug in drugs"  value="{{drug._id}}title{{drug.title}} ">{{drug.title}}</option>
+                              </select>
+                              <span style="color:red; font-size:12px;" ng-show="addDrug.content.$touched && addDrug.content.$invalid">
+                                 <span ng-show="addDrug.content.$error.required">Category is required.</span>
+                               </span>
+                        </div>
                         </div>
                        
                         
