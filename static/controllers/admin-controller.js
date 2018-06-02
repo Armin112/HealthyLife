@@ -89,6 +89,9 @@ function AdminController($scope,$location, $http, $rootScope, $timeout){
         $http.delete('/admin/delete_user/'+id, config).then(function(response){
             get_all_users();
             $scope.message_success = "You are successfully removed user from your site.";
+            $timeout(function(){ 
+                $scope.message_success = "";
+              },3000);
         }, function(error){
             console.log(error);
         });
@@ -99,6 +102,9 @@ function AdminController($scope,$location, $http, $rootScope, $timeout){
         $http.post('/admin/add_blog', blog, config).then(function(response){
             $scope.blog = null;
             $scope.message_success = "Congratulations, you are successfully added new blog post.";
+            $timeout(function(){ 
+                $scope.message_success = "";
+              },3000);
         }, function(error){
             console.log(error);
         });
@@ -111,6 +117,9 @@ function AdminController($scope,$location, $http, $rootScope, $timeout){
             $scope.message_success = "You are successfully removed blog post from your site.";
             $timeout(function(){ 
                 $scope.message_success = "";
+              },3000);
+            $timeout(function(){ 
+                $scope.message_success = "";
                 },3000);       
         }, function(error){
             console.log(error);
@@ -121,6 +130,9 @@ function AdminController($scope,$location, $http, $rootScope, $timeout){
     $scope.edit_blog = function(blog){
         $http.put('/admin/blog_edit/'+curr_blog_id, blog,config).then(function(response){
             $scope.message_success = "Congratulations, you are successfully updated your blog post.";
+            $timeout(function(){ 
+                $scope.message_success = "";
+              },3000);
         }, function(error){
           console.log(error);
         });
@@ -131,6 +143,9 @@ function AdminController($scope,$location, $http, $rootScope, $timeout){
         $http.post('/admin/add_disease', disease, config).then(function(response){
             $scope.disease = null;
             $scope.message_success = "Congratulations, you are successfully added new disease.";
+            $timeout(function(){ 
+                $scope.message_success = "";
+              },3000);
         }, function(error){
             console.log(error);
         });
@@ -153,6 +168,9 @@ function AdminController($scope,$location, $http, $rootScope, $timeout){
     $scope.edit_disease = function(disease){
         $http.put('/admin/disease_edit/'+curr_blog_id, disease,config).then(function(response){
             $scope.message_success = "Congratulations, you are successfully updated your disease.";
+            $timeout(function(){ 
+                $scope.message_success = "";
+              },3000);
         }, function(error){
           console.log(error);
         });
@@ -163,6 +181,9 @@ function AdminController($scope,$location, $http, $rootScope, $timeout){
         $http.post('/admin/add_drug', drug, config).then(function(response){
             $scope.drug = null;
             $scope.message_success = "Congratulations, you are successfully added new drug.";
+            $timeout(function(){ 
+                $scope.message_success = "";
+              },3000);
         }, function(error){
             console.log(error);
         });
@@ -185,6 +206,9 @@ function AdminController($scope,$location, $http, $rootScope, $timeout){
     $scope.edit_drug = function(drug){
         $http.put('/admin/drug_edit/'+curr_blog_id, drug,config).then(function(response){
             $scope.message_success = "Congratulations, you are successfully updated your drug.";
+            $timeout(function(){ 
+                $scope.message_success = "";
+              },3000);
         }, function(error){
           console.log(error);
         });

@@ -2092,13 +2092,16 @@ margin-top:50px;}
     color: #fe8b4c;
 }
 
-.message-success{
+.message-success {
     position: fixed;
     bottom: 20px;
     text-align: center;
     width: 100%;
     left: 0;
-   z-index:99;
+    /* padding: 30px; */
+    background: rgba(255,255,255,0);
+    z-index: 99;
+    height: 80px;
 }
 
 .message-success p {
@@ -2106,10 +2109,14 @@ margin-top:50px;}
     background: #27b927;
     color: #fff !important;
     margin: auto;
-   
     font-size: 16px;
     font-weight: 400;
     border-radius: 5px;
+    line-height: 80px;
+   
+    max-height: 100%;
+    bottom: 40px;
+    position: relative;
 }
 
 .like {

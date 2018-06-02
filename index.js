@@ -18,6 +18,8 @@ var cur_blog_id = "";
 var date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate(); 
 var cur_user = "";
 
+
+
 //REGISTER USER
 app.post('/register', function(request, response){
   var user_reg = request.body;
@@ -39,7 +41,7 @@ app.post('/login', function(request, response){
         var token = jwt.sign(user, jwt_secret, {
           expiresIn: 20000 
         });
-        cur_user = user.username;
+      
         response.send({
           success: true,
           message: 'Authenticated',
@@ -53,7 +55,8 @@ app.post('/login', function(request, response){
 });
 
 //GET SINGLE USER PROFILE
-app.get('/users/myprofile', function(request, response){
+app.get('/users/myprofile/:current_user', function(request, response){
+  cur_user = request.params.current_user;
   db.collection('users').find({username:cur_user}).toArray((err, users) => {
     if (err) return console.log(err);
     response.setHeader('Content-Type', 'application/json');
@@ -74,6 +77,17 @@ app.put('/users/edituser', function(request, response){
   user = request.body;
   db.collection('users').findOneAndUpdate( {username:cur_user }, {
     $set: {firstname: user.firstname, lastname: user.lastname, username: user.username, email: user.email}
+  }, (err, result) => {
+    if (err) return res.send(err);
+    response.send('OK');
+  })
+});
+
+//EDIT SINGLE USER PASSWORD
+app.put('/users/editpassword', function(request, response){
+  user = request.body;
+  db.collection('users').findOneAndUpdate( {username:cur_user }, {
+    $set: {password: md5(user.password)}
   }, (err, result) => {
     if (err) return res.send(err);
     response.send('OK');
@@ -347,7 +361,7 @@ app.put('/admin/comment_edit/:id', function(request, response){
 
 //GET SEARCHED DISEASES
 app.get('/admin/get_searched_diseases/:key', function(request, response){
-  db.collection('disease').find({title: request.params.key }).toArray((err, searched_diseases) => {
+  db.collection('disease').find({title: {$regex: request.params.key}}).toArray((err, searched_diseases) => {
     if (err) return console.log(err);
     response.setHeader('Content-Type', 'application/json');
     response.send(searched_diseases);

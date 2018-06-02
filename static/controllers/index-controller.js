@@ -17,14 +17,14 @@ function IndexController($scope, $http, $location){
     var init = function(){ 
         get_all_blogs();
         get_users(); 
+      
         get_all_diseases();
         get_all_users();
         get_all_drugs();
         get_searched_diseases();
-        get_all_unlikes();
-        get_all_likes();
+       
       }
-
+    
     var get_all_blogs = function (){
         $http.get('/admin/all_blogs').then(function(response){
           $scope.blogs = response.data;
@@ -51,13 +51,13 @@ function IndexController($scope, $http, $location){
       }
      };
 
-      var get_users = function (){
-        $http.get('/users/myprofile', config).then(function(response){
-            $scope.users_test = response.data;
-        }),function(error){
-            alert(error.status);
-        }
-    };
+     var get_users = function (){
+      $http.get('/users/myprofile', config).then(function(response){
+          $scope.users = response.data;
+      }),function(error){
+          alert(error.status);
+      }
+  };
  
     var get_all_users = function (){
       $http.get('/admin/all_users', config).then(function(response){
@@ -76,21 +76,7 @@ function IndexController($scope, $http, $location){
     }
 };
 
-var get_all_unlikes = function (){
-  $http.get('/admin/all_unlikes', config).then(function(response){
-      $scope.unlikes = response.data;
-  }),function(error){
-      alert(error.status);
-  }
-};
 
-var get_all_likes = function (){
-  $http.get('/admin/all_likes', config).then(function(response){
-      $scope.likes = response.data;
-  }),function(error){
-      alert(error.status);
-  }
-};
 
 
   init();

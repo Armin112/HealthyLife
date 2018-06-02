@@ -54,15 +54,11 @@
                       <span ng-show="addUser.email.$error.email">Invalid email address.</span>
                     </span>
              </div>
-            <div class="section-field mb-20">
-             <label class="mb-10" for="Password">Password </label>
-               <input id="password" class="Password form-control" type="password"  name="password" disabled value="{{user.password}}"  pattern=".{5,}" ng-model="user.password" required>
-               <span style="color:red; font-size:12px;" ng-show="addUser.password.$touched && addUser.password.$invalid">
-                  <span ng-show="addUser.password.$error.required">Password must have at least 5 chars.</span>
-                </span>
-            </div>
+          
             <button ng-click="edit_user(user)" ng-disabled="!editUser.$valid" class="button" type="submit">Edit Profile <i class="fa fa-check"></i></button>
-            <p style="color: green; margin-top:40px;"> {{message_success}}</p>
+            <a href="#!change_password" class="btn btn-primary">Change Password <i class="fa fa-check"></i></a>
+
+            <div class="message-success"><p style="color: green; margin-top:40px;"> {{message_success}}</p>
           </div>
 
        

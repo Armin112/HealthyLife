@@ -33,15 +33,13 @@
                       <img alt="" src="images/empty-template.jpg" class="img-fluid">
                     </div>
                    <div class="blog-info">
-                     <h4 class="text-black"> <a href="/#!single-disease?id={{disease._id}}">{{searched_disease.title}} </a> </h4>
+                     <h4 class="text-black"> <a href="/#!single-disease?id={{searched_disease._id}}">{{searched_disease.title}} </a> </h4>
                       
-                      <p class="mt-15">{{searched_disease.excerpt}}</p>
+                      <p class="mt-15">{{searched_disease.excerpt}}...</p>
                       <strong class="theme-color">SUGGESTED DRUGS</strong>
                     <h4 class="mt-15 suggested-drugs" style="border-bottom:1px solid #f3f3f3;">
-                        <span style="font-weight:600"><a href="#">   Drug 1</a></span> 
-                        <a href="#"><span class="unlike empty">4</span></a> 
-                        <a href="#"><span class="like empty">350</span></a>
-                    </h4>
+                        <span style="font-weight:600"><a href="/#!single-drug?id={{searched_disease.suggested_drug.substr(0,24)}}">   {{searched_disease.suggested_drug.substr(29)}}</a></span> 
+                       
                    </div>
                 </div>
               </div>

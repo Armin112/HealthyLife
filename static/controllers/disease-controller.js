@@ -1,4 +1,4 @@
-function DiseaseController($scope, $http, $location){
+function DiseaseController($scope, $http, $location, $timeout){
     var config = {headers:  {
       'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
       'Accept': 'application/json;odata=verbose',
@@ -18,10 +18,21 @@ function DiseaseController($scope, $http, $location){
         get_comments();
         get_all_unlikes();
         get_all_likes();
+        get_users();
         get_all_likes_check();
         get_all_unlikes_check();
         get_user_post_comment();
       }
+
+      var get_users = function (){
+        var current_user = localStorage.getItem('logged_user');
+        $http.get('/users/myprofile/'+current_user, config).then(function(response){
+            $scope.users = response.data;
+        }),function(error){
+            alert(error.status);
+        }
+    };
+    
 
     var get_all_diseases = function (){
         $http.get('/admin/all_diseases').then(function(response){
@@ -109,8 +120,11 @@ function DiseaseController($scope, $http, $location){
       get_all_unlikes();
       user_unliked = true;
       $scope.message_success = "Congratulations, you are successfully rated drug.";
+      $timeout(function(){ 
+        $scope.message_success = "";
+      },3000);
+
       $http.post('/admin/unlike_drug', disease, config).then(function(response){
-       
       }, function(error){
           console.log(error);
       });
@@ -124,8 +138,10 @@ function DiseaseController($scope, $http, $location){
     get_all_likes();
     user_liked = true;
     $scope.message_success = "Congratulations, you are successfully rated drug.";
+    $timeout(function(){ 
+      $scope.message_success = "";
+    },3000);
     $http.post('/admin/like_drug', disease, config).then(function(response){
-      
     }, function(error){
         console.log(error);
     });

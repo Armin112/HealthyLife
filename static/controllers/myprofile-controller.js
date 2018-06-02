@@ -1,4 +1,4 @@
-function MyProfileController($scope,$location, $http, $rootScope){
+function MyProfileController($scope,$location, $http, $rootScope, $timeout){
     console.log("Hello from controller");
 
     
@@ -16,21 +16,38 @@ function MyProfileController($scope,$location, $http, $rootScope){
       
       }
 
-    var get_users = function (){
-        $http.get('/users/myprofile', config).then(function(response){
-          $scope.users = response.data;
-          console.log(response.data);
+      var get_users = function (){
+        var current_user = localStorage.getItem('logged_user');
+        $http.get('/users/myprofile/'+current_user, config).then(function(response){
+            $scope.users = response.data;
         }),function(error){
-          alert(error.status);
+            alert(error.status);
         }
-      };
+    };
     
       init();
 
       $scope.edit_user = function(user){
         $http.put('/users/edituser', user,config).then(function(response){
             $scope.message_success = "Congratulations, you are successfully updated your profile.";
+            $timeout(function(){ 
+              $scope.message_success = "";
+            },3000);
           get_users();
+        }, function(error){
+          console.log(error);
+        });
+      }
+
+      $scope.edit_password = function(user){
+        $http.put('/users/editpassword', user,config).then(function(response){
+            $scope.message_success = "Congratulations, you are successfully updated your password.";
+            $timeout(function(){ 
+              localStorage.clear();
+              $scope.logedin = false;
+              $scope.logedtext = "LOGIN";
+              $location.path("/login"); 
+            },2000);
         }, function(error){
           console.log(error);
         });
