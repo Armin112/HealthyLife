@@ -362,17 +362,11 @@ app.post('/admin/unlike_drug', function(request, response){
       'date': date}, (err, result) => {
         if (err) return console.log(err);
       })
-      db.collection('disease').findOneAndUpdate( {_id: new MongoId(data_info._id)}, {
-        $set: {suggested_drug_unlikes: data_info.suggested_drug_unlikes+1}
-      }, (err, result) => {
-        if (err) return res.send(err);
-         response.send("OK");  
-      })
 });
 
 //GET ALL UNLIKES
 app.get('/admin/all_unlikes', function(request, response){
-  db.collection('unlike').find({ user : cur_user }).toArray((err, unlikes) => {
+  db.collection('unlike').find({ disease : cur_blog_id }).toArray((err, unlikes) => {
     if (err) return console.log(err);
     response.setHeader('Content-Type', 'application/json');
     response.send(unlikes);
@@ -386,20 +380,33 @@ app.post('/admin/like_drug', function(request, response){
       'date': date}, (err, result) => {
         if (err) return console.log(err);
       })
-      db.collection('disease').findOneAndUpdate( {_id: new MongoId(data_info._id)}, {
-        $set: {suggested_drug_likes: data_info.suggested_drug_likes+1}
-      }, (err, result) => {
-        if (err) return res.send(err);
-         response.send("OK");  
-      })
+
 });
 
 //GET ALL LIKES
 app.get('/admin/all_likes', function(request, response){
-  db.collection('like').find({ user : cur_user }).toArray((err, likes) => {
+  db.collection('like').find({ disease : cur_blog_id }).toArray((err, likes) => {
     if (err) return console.log(err);
     response.setHeader('Content-Type', 'application/json');
     response.send(likes);
+  })
+});
+
+//GET ALL LIKES FOR CHECK
+app.get('/admin/all_likes_check', function(request, response){
+  db.collection('like').find({ $and: [ { disease: { $eq: cur_blog_id } }, { user: { $eq: cur_user } } ] }).toArray((err, likes_check) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(likes_check);
+  })
+});
+
+//GET ALL UNLIKES FOR CHECK
+app.get('/admin/all_unlikes_check', function(request, response){
+  db.collection('unlike').find({ $and: [ { disease: { $eq: cur_blog_id } }, { user: { $eq: cur_user } } ] }).toArray((err, unlikes_check) => {
+    if (err) return console.log(err);
+    response.setHeader('Content-Type', 'application/json');
+    response.send(unlikes_check);
   })
 });
 

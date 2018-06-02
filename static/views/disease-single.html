@@ -62,7 +62,7 @@
                     <div class="blog-box blog-1 active">        
                          <div class="blog-info">
                           <span class="post-category"><a href="#">Disease</a></span>
-                          <h4> <a href="#"> {{disease.title}}</a></h4>
+                          <h4> <a href="#!single-disease?id={{disease2._id}}"> {{disease.title}}</a></h4>
                           <p>{{disease.excerpt}}</p>
                           <span><i class="fa fa-user"></i> By Admin</span>
                           <span><i class="fa fa-calendar-check-o"></i> {{disease.date}} </span>
@@ -98,15 +98,25 @@
                         <strong class="theme-color" style="font-size:20px; margin-bottom:20px;font-size: 20px;float: left;width: 100%;border-bottom: 1px solid;">SUGGESTED DRUGS</strong>
                           <div class="port-post-info" style="padding-left:10px;">
                           
-                               <h4 class="mt-15" style="border-bottom:1px solid #e8e5e5;margin-bottom: 20px;float: left;width: 100%; padding-bottom:5px;"><span style="font-weight:600"><a href="#">
-                               Drug 1</a></span> <span style="float:right; font-weight:400">350 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>4
-                               <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-                                <h4 class="mt-15" style="border-bottom:1px solid #e8e5e5;margin-bottom: 20px;float: left;width: 100%; padding-bottom:5px;"><span style="font-weight:600"><a href="#">
-                               Drug 2</a></span> <span style="float:right; font-weight:400">320 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>15
-                               <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-                                <h4 class="mt-15" style="border-bottom:1px solid #e8e5e5;margin-bottom: 20px;float: left;width: 100%; padding-bottom:5px;"><span style="font-weight:600"><a href="#">
-                               Drug 3</a></span> <span style="float:right; font-weight:400">250 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>21
-                               <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
+                               <h4 class="mt-15" style="border-bottom:1px solid #e8e5e5;margin-bottom: 20px;float: left;width: 100%; padding-bottom:5px;">
+                                 <span style="font-weight:600"><a href="/#!single-drug?id={{disease.suggested_drug.substr(0,24)}}">{{disease.suggested_drug.substr(29)}}</a></span> 
+                               
+                                 <div ng-if="!is_user_unliked() && !is_user_liked()">
+                                    <button ng-click="unlike_drug(disease)" style="cursor:pointer;float: right;background: none;border: none;margin-right: 20px;"><span class="unlike empty" style="float: right;background-position: left !important;margin-left: 20px;padding-left: 40px;padding-right: 0;">{{unlikes}}</span></button>
+                                    <button ng-click="like_drug(disease)" style="cursor:pointer;float: right;background: none;border: none;"><span class="like empty">{{likes}}</span></button>
+                                  </div>
+                               
+                                  <div ng-if="is_user_unliked()">
+                                      <button style="float: right;background: none;border: none;margin-right: 20px;"><span class="unlike full" style="float: right;background-position: left !important;margin-left: 20px;padding-left: 40px;padding-right: 0;">{{unlikes}}</span></button>
+                                      <button style="float: right;background: none;border: none;"><span class="like empty">{{likes}}</span></button>
+                                    </div>
+                                  <div ng-if="is_user_liked()">
+                                      <button style="float: right;background: none;border: none;margin-right: 20px;"><span class="unlike empty" style="float: right;background-position: left !important;margin-left: 20px;padding-left: 40px;padding-right: 0;">{{unlikes}}</span></button>
+                                      <button style="float: right;background: none;border: none;" ><span class="like full">{{likes}}</span></button>
+                                  </div>
+                            
+                            </h4>
+                               
                           </div>
                         </div>
                  <div class="comments-1" ng-repeat="user_comment in user_comments" style="width:100%">

@@ -94,47 +94,5 @@ var get_all_likes = function (){
 
 
   init();
- 
-  $scope.unlike_drug = function(disease){
-    suggested_drug_id = disease.suggested_drug.substring(0,24);
-    console.log(suggested_drug_id);
-    $http.post('/admin/unlike_drug', disease, config).then(function(response){
-        get_all_diseases();
-        $scope.message_success = "Congratulations, you are successfully rated drug.";
-        get_all_unlikes();
-        is_unliked = true;
-        is_liked = true;
-    }, function(error){
-        console.log(error);
-    });
-}
-
-$scope.like_drug = function(disease){
-  suggested_drug_id = disease.suggested_drug.substring(0,24);
-  console.log(suggested_drug_id);
-  $http.post('/admin/like_drug', disease, config).then(function(response){
-      get_all_diseases();
-      $scope.message_success = "Congratulations, you are successfully rated drug.";
-      get_all_likes();
-      is_liked = true;
-      is_unliked = true;
-  }, function(error){
-      console.log(error);
-  });
-}
-
-$scope.is_unliked_func = function(){
-  if(is_unliked == true){
-      return true;  
-  }
-  return false;
-}
-
-$scope.is_liked_func = function(){
-  if(is_liked == true){
-      return true;  
-  }
-  return false;
-}
 
 }
