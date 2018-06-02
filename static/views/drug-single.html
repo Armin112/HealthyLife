@@ -17,13 +17,13 @@
         </section>
         
         
-        <section class="blog blog-single white-bg page-section-ptb">
+        <section class="blog blog-single white-bg " style="margin-top:20px">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="blog-entry mb-10">
                             <div class="entry-image clearfix">
-                                <img class="img-fluid" src="images/blog-big-template.jpg" alt="">
+                                <img class="img-fluid" src="post_images/{{drug._id}}.jpg" alt="">
                             </div>
                             <div class="blog-detail">
                                 <div class="entry-meta mb-10">
@@ -50,11 +50,11 @@
                         <div class="row">
                             <div class="col-ld-12 col-md-12">
                                 <h3 class="theme-color mb-20">Related Drugs</h3>  
-                                <div class="item" ng-repeat="drug2 in drugs" style="width:33%; display:inline-block">
+                                <div class="item" ng-repeat="drug2 in drugs | limitTo:3" style="width:33%; display:inline-block" >
                                     <div class="blog-box blog-1 active">        
                                         <div class="blog-info">
                                             <span class="post-category"><a href="#">Drug</a></span>
-                                            <h4> <a href="#"> {{drug2.title}}</a></h4>
+                                            <h4> <a href="/#!single-drug?id={{drug2._id}}"> {{drug2.title}}</a></h4>
                                             <p>{{drug2.excerpt}}</p>
                                             <span><i class="fa fa-user"></i> By Admin</span>
                                             <span><i class="fa fa-calendar-check-o"></i> {{drug2.date}} </span>
@@ -62,7 +62,7 @@
                                                 <a class="button arrow" href="/#!single-drug?id={{drug2._id}}">Read More<i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                             </div>
                                         </div>  
-                                        <div class="blog-box-img" style="background-image:url(images/blog-big-template.jpg);"></div>
+                                        <div class="blog-box-img" style="background-image:url(post_images/{{drug2._id}}.jpg);"></div>
                                     </div>
                                 </div>  
                             </div>

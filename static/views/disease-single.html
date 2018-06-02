@@ -27,7 +27,7 @@
            <div class="col-lg-12">
                <div class="blog-entry mb-10">
                     <div class="entry-image clearfix">
-                      <img class="img-fluid" src="images/blog-big-template.jpg" alt="">
+                      <img class="img-fluid" src="post_images/{{disease._id}}.jpg" alt="">
                   </div>
                   <div class="blog-detail">
                       <div class="entry-meta mb-10">
@@ -62,15 +62,15 @@
                     <div class="blog-box blog-1 active">        
                          <div class="blog-info">
                           <span class="post-category"><a href="#">Disease</a></span>
-                          <h4> <a href="#!single-disease?id={{disease2._id}}"> {{disease.title}}</a></h4>
+                          <h4> <a href="/#!single-disease?id={{disease2._id}}"> {{disease2.title}}</a></h4>
                           <p>{{disease.excerpt}}</p>
                           <span><i class="fa fa-user"></i> By Admin</span>
-                          <span><i class="fa fa-calendar-check-o"></i> {{disease.date}} </span>
+                          <span><i class="fa fa-calendar-check-o"></i> {{disease2.date}} </span>
                           <div class="entry-button" style="margin-top: 20px;">
                                 <a class="button arrow" href="/#!single-disease?id={{disease2._id}}">Read More<i class="fa fa-angle-right" aria-hidden="true"></i></a>
                             </div>
                           </div>  
-                          <div class="blog-box-img" style="background-image:url(images/blog-big-template.jpg);"></div>
+                          <div class="blog-box-img" style="background-image:url(post_images/{{disease2._id}}.jpg);"></div>
                         </div>
                     </div>
                    

@@ -85,9 +85,10 @@
             <div class=" text-black">
                  <div class="" data-nav-dots="true" data-items="3" data-md-items="3" data-sm-items="3">
            <div class="col-lg-4 col-md-4 col-sm-4 xs-mb-30 pull-left" ng-repeat="disease in diseases | limitTo:3">
+            
            <div class="blog-box blog-2 white-bg active">
-              <div class="feature-image mb-20">
-                 <img alt="" src="images/empty-template.jpg" class="img-fluid">
+              <div class="feature-image mb-20" style="height: 230px;overflow: hidden">
+                 <img alt="" src="post_images/{{disease._id}}.jpg" class="img-fluid" style="height:100%">
                </div>
               <div class="blog-info">
                 <h4 class="text-black"> <a href="/#!single-disease?id={{disease._id}}"> {{disease.title}} </a> </h4>
@@ -174,7 +175,7 @@
        <div class="row">
          <div class="col-md-4 col-sm-4 xs-mb-30" ng-repeat="blog in blogs | limitTo:3">
            <div class="blog">
-             <img class="img-fluid mb-30" src="images/empty-template.jpg" alt="">
+              <img class="img-fluid mb-30" src="post_images/{{blog._id}}.jpg" alt="">
               <h3 class="fw-5 mt-10"><a href="/#!single-blog?id={{blog._id}}">{{blog.title}}</a></h3>
               <p>{{blog.excerpt}}</p>
               <div class="admin">

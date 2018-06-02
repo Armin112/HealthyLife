@@ -23,8 +23,8 @@
         <div class="row">
             <div class="col-lg-4 col-md-4" ng-repeat="drug in fruit_drugs" style="margin-bottom: 20px;">
                <div class="blog-box blog-2 white-bg active">
-                   <div class="feature-image mb-20">
-                      <img alt="" src="images/empty-template.jpg" class="img-fluid">
+                   <div class="feature-image mb-20" style="height: 230px;overflow: hidden">
+                      <img alt="" src="post_images/{{drug._id}}.jpg" class="img-fluid" style="height:100%">
                     </div>
                    <div class="blog-info">
                      <h4 class="text-black"> <a href="/#!single-drug?id={{drug._id}}"> {{drug.title}} </a> </h4>

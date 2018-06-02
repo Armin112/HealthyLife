@@ -23,7 +23,7 @@
             <div class="col-lg-12">
                 <div class="blog-entry mb-10">
                     <div class="entry-image clearfix">
-                        <img class="img-fluid" src="images/blog-big-template.jpg" alt="">
+                        <img class="img-fluid" src="post_images/{{blog._id}}.jpg" alt="">
                     </div>
                     <div class="blog-detail">
                         <div class="entry-meta mb-10">
@@ -54,7 +54,7 @@
                             <div class="blog-box blog-1 active">        
                                 <div class="blog-info">
                                     <span class="post-category"><a href="#">Blog</a></span>
-                                    <h4> <a href="#"> {{blog2.title}}</a></h4>
+                                    <h4> <a href="/#!single-blog?id={{blog2._id}}"> {{blog2.title}}</a></h4>
                                     <p>{{blog2.excerpt}}</p>
                                     <span><i class="fa fa-user"></i> By Admin</span>
                                     <span><i class="fa fa-calendar-check-o"></i> {{blog2.date}} </span>
@@ -62,7 +62,7 @@
                                         <a class="button arrow" href="/#!single-blog?id={{blog2._id}}">Read More<i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                     </div>
                                 </div>  
-                                <div class="blog-box-img" style="background-image:url(images/blog-big-template.jpg);"></div>
+                                <div class="blog-box-img" style="background-image:url(post_images/{{blog2._id}}.jpg);"></div>
                             </div>
                         </div>  
                     </div>

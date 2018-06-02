@@ -35,7 +35,7 @@
                           </div>
                            <div class="section-field mb-20 col-sm-12">
                            <label class="mb-10" for="name">Disease Content </label>
-                             <textarea id="content" class="web form-control" style="height:300px;" name="content" ng-model="disease.content" pattern=".{50,}" required></textarea>
+                             <textarea id="content" class="web form-control" style="height:300px;" name="content" ng-model="disease.content"  ng-minlength="50" required></textarea>
                              <span style="color:red; font-size:12px;" ng-show="addDisease.content.$touched && addDisease.content.$invalid">
                                 <span ng-show="addDisease.content.$error.required">You need to enter minimum 50 chars.</span>
                               </span>

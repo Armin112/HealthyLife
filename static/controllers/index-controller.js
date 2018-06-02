@@ -28,6 +28,7 @@ function IndexController($scope, $http, $location){
     var get_all_blogs = function (){
         $http.get('/admin/all_blogs').then(function(response){
           $scope.blogs = response.data;
+          console.log($scope.blogs.id);
         }),function(error){
           alert(error.status);
         }

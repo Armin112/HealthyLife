@@ -114,7 +114,7 @@ app.delete('/admin/delete_user/:id', function(request, response){
 //STORE POST IMAGE -- NOT WORKING
 var storage	=	multer.diskStorage({
   destination: function (request, file, callback) {
-    callback(null, './Imagews'); },
+    callback(null, './Images'); },
   filename: function (request, file, callback) {
     callback(null, file.fieldname + '-' + Date.now() + '.' + mime.extension(file.mimetype)); }});
 var upload = multer({ storage : storage }).array('image');
@@ -128,6 +128,7 @@ app.get('/admin/addblog', function(request, response){
 //ADD NEW BLOG POST
 app.post('/admin/add_blog', function(request, response){
   var addblog = request.body;
+  
   var excerpt = addblog.content.substring(0, 80);
   upload(request, response, function(err) { 
     if (err) return console.log(err);

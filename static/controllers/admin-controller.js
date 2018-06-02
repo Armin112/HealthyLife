@@ -109,6 +109,7 @@ function AdminController($scope,$location, $http, $rootScope, $timeout){
             console.log(error);
         });
     }
+    
 
     //DELETE SINGLE BLOG POST
     $scope.delete_blog = function(id){
