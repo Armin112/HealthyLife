@@ -1,4 +1,38 @@
-
+<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>		
+		<script type="text/javascript">
+       /*     $(function(){				
+                $('#login').click(function(e){
+                    e.preventDefault();
+                    console.log('select_link clicked');
+                    
+                     $.ajax({
+                        dataType: 'jsonp',
+                        data: "data=credentials",						
+                        jsonp: 'callback',
+                        url: 'http://localhost:3200/login?callback=?',						
+                        success: function(data) {
+                            console.log('success');
+                            console.log(JSON.stringify(data));
+                        }
+                    });
+					var data = {};
+					data.title = "title";
+					data.message = "message";
+					
+					$.ajax({
+						type: 'POST',
+						data: JSON.stringify(data),
+				        contentType: 'application/json',
+                        url: 'http://localhost:3000/login',						
+                        success: function(data) {
+                            console.log('success');
+                            console.log(JSON.stringify(data));
+                        }
+                    });
+	
+                });				
+            });*/
+        </script>
 
 <section class="login-box-main height-100vh page-section-ptb parallax" style="background: url(images/slider-bg.jpg)">  <div class="login-box-main-middle">
     <div class="container">
@@ -60,7 +94,7 @@
           </div>
         </div>
       </div>
-      <div ng-if="check_login()">
+      <div ng-if="check_login()" id="login">
           <h4 style="color: #ffffff;text-align: center; font-size: 2rem;">You are logged in already.</h4>
           </div>
               

@@ -131,16 +131,16 @@
         </div>
        <form name="addComment" novalidate>
             <div class="login-box pb-50 clearfix white-bg">
-                    <div ng-repeat="user in users"></div>                                    
+                    <div ng-repeat="user in users">                                  
                     <input id="name" class="web form-control" type="hidden"  name="firstname" value="{{user.firstname}}"  ng-model="user.firstname" required>
                     <input id="lastname" class="web form-control" type="hidden"  name="lastname" value="{{user.lastname}}" ng-model="user.lastname" required>
                     <input type="hidden"  class="form-control" name="username" value="{{user.username}}" ng-model="user.username" required>
                     <input type="hidden"  class="form-control" value="{{user.email}}" name="email"  ng-model="user.email" required>
                     <div class="row">
-                
+                 
                         <div class="section-field mb-20 col-sm-12">
                         <label class="mb-10" for="name">Enter your message </label>
-                          <textarea id="message" class="web form-control" style="height:200px;" name="message" ng-model="user.message" pattern=".{20,}" required></textarea>
+                          <textarea id="message" class="web form-control" style="height:200px;" name="message" ng-model="user.message" minlength="20" required></textarea>
                           <span style="color:red; font-size:12px;" ng-show="addComment.message.$touched && addComment.message.$invalid">
                              <span ng-show="addComment.message.$error.required">You need to enter minimum 20 chars.</span>
                            </span>

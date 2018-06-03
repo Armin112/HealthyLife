@@ -2199,3 +2199,7 @@ strong.theme-color {
     overflow: hidden;
     /* display: contents; */
 }
+
+.mobileTopFixed.desktopTopFixed .menu-bar {
+    margin-top: 0;
+}
